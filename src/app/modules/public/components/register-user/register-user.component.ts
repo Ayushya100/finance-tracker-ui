@@ -17,7 +17,7 @@ import { RegexPatterns } from 'src/app/modules/shared/modules/pattern-validators
 })
 export class RegisterUserComponent implements OnInit {
 
-  staticDataPrefix: any = 'registerUserComponent.component.'
+  staticDataPrefix: any = 'registerUserComponent.component.';
   userFields: any;
   userForm: any;
   userValidators: any;
