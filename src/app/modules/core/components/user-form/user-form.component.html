@@ -1,0 +1,43 @@
+<div class="card-color p-10 rounded-md">
+    <p class="text-h-1 text-3xl">{{ popupTitle }}</p>
+    <p class="text-h-2 text-lg">{{ popupHeader }}</p>
+
+    <div class="mt-4 gap-4">
+        <form [formGroup]="form">
+            <div *ngFor="let formField of formData;">
+                <div class="mt-3 mb-3">
+                    <p class="text-n text-sm pl-2">{{ formField.label }} <span *ngIf="formField.required">*</span></p>
+                    <div *ngIf="formField.type != 'password'; else passwordField">
+                        <input class="form-controller w-full min-h-10 rounded-md" [type]="formField.type" [placeholder]="formField.placeholder" [formControlName]="formField.field">
+                    </div>
+                    <ng-template class="flex items-center" #passwordField>
+                        <input class="form-controller w-11/12 min-h-10 rounded-sm flex-1" [type]="hidePassword ? 'password' : 'text'" [placeholder]="formField.placeholder" [formControlName]="formField.field">
+                        <button class="form-controller align-middle border-none outline-none cursor-pointer w-1/12 flex-none h-10 mb-1 rounded-sm" (click)="togglePasswordVisibility()">
+                            <span *ngIf="hidePassword">
+                                <img [src]="showPasswordIcon" alt="">
+                            </span>
+                            <span *ngIf="!hidePassword">
+                                <img [src]="hidePasswordIcon" alt="">
+                            </span>
+                        </button>
+                    </ng-template>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="mt-5 grid place-items-center">
+        <button class="primary-btn-color w-full min-h-9 rounded-lg" (click)="onFormSubmit()" [disabled]="!form.valid">{{ btnHeader }}</button>
+    </div>
+
+    <div *ngIf="formValidators">
+        <div class="mt-4">
+            <p class="text-h-2 text-md mb-2">{{ popupSubHeader }}</p>
+            <ul>
+                <div *ngFor="let validator of formValidators">
+                    <li [class.valid]="isValid(validator.field)" [class.invalid]="isInvalid(validator.field)" class="text-n list-disc ml-3">{{ validator.text }}</li>
+                </div>
+            </ul>
+        </div>
+    </div>
+</div>
