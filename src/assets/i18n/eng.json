@@ -35,5 +35,24 @@
             "Helping us": "Thank you for helping us keep your account secure!",
             "Verify your account": "Verify your account"
         }
+    },
+    "loginUserComponent": {
+        "component": {
+            "LogIn": "LogIn",
+            "Welcome Back": "Welcome Back, Always a pleasure to see you!",
+            "Required Fields": "Required Fields"
+        },
+        "utils": {
+            "fields": {
+                "Username / Email Id": "Username / Email Id",
+                "Provide your username or emailId": "Provide your username or emailId",
+                "Password": "Password",
+                "Enter your Password": "Enter your Password"
+            },
+            "validation": {
+                "Username / Email Id is required": "Username / Email Id is required",
+                "Password is required": "Password is required"
+            }
+        }
     }
 }

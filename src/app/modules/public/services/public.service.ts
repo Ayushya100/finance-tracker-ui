@@ -32,4 +32,9 @@ export class PublicService {
     return this.httpClient.put<any>(URI, payload, this.httpOptions);
   }
 
+  loginUser(payload: any) {
+    const URI = `${this.accountsSvc}users/login-user`;
+    return this.httpClient.post<any>(URI, payload, this.httpOptions);
+  }
+
 }

@@ -9,6 +9,8 @@ export class UserFormsUtils {
     
     registerFormPrefix: any = 'registerUserComponent.utils.fields.';
     registerValidatorPrefix: any = 'registerUserComponent.utils.validation.';
+    loginfFormPrefix: any = 'loginUserComponent.utils.fields.';
+    loginValidatorPrefix: any = 'loginUserComponent.utils.validation.';
 
     constructor(private i18n: I18nService) {}
 
@@ -69,6 +71,37 @@ export class UserFormsUtils {
                     field: 'password'
                 }
             ]
-        }
+        };
+    }
+
+    async getUserLoginFormsMetadata() {
+        return {
+            fields: [
+                {
+                    label: await this.i18n.translate(`${this.loginfFormPrefix}Username / Email Id`),
+                    field: 'userName',
+                    type: 'text',
+                    required: true,
+                    placeholder: await this.i18n.translate(`${this.loginfFormPrefix}Provide your username or emailId`)
+                },
+                {
+                    label: await this.i18n.translate(`${this.loginfFormPrefix}Password`),
+                    field: 'password',
+                    type: 'password',
+                    required: true,
+                    placeholder: await this.i18n.translate(`${this.loginfFormPrefix}Enter your Password`)
+                }
+            ],
+            validators: [
+                {
+                    text: await this.i18n.translate(`${this.loginValidatorPrefix}Username / Email Id is required`),
+                    field: 'userName'
+                },
+                {
+                    text: await this.i18n.translate(`${this.loginValidatorPrefix}Password is required`),
+                    field: 'password'
+                }
+            ]
+        };
     }
 }
