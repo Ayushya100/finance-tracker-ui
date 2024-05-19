@@ -1,0 +1,30 @@
+{
+    "registerUserComponent": {
+        "component": {
+            "Register User": "Register User",
+            "Ready to Get Started? Join us Today!": "Ready to Get Started? Join us Today!",
+            "Required Fields": "Required Fields",
+            "Register": "Register"
+        },
+        "utils": {
+            "fields": {
+                "First Name": "First Name",
+                "Provide your First Name": "Provide your First Name",
+                "Last Name": "Last Name",
+                "Provide your Last Name": "Provide your Last Name",
+                "Email Id": "Email Id",
+                "Register your Email Id": "Register your Email Id",
+                "User Name": "User Name",
+                "Select your Username": "Select your Username",
+                "Password": "Password",
+                "Enter your Password": "Enter your Password"
+            },
+            "validation": {
+                "First Name is required": "First Name is required",
+                "Email Id is required": "Email Id is required",
+                "Username is required": "Username is required",
+                "Password is required": "Password is required"
+            }
+        }
+    }
+}
