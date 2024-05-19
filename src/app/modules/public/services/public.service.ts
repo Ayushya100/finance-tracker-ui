@@ -27,4 +27,9 @@ export class PublicService {
     return this.httpClient.post<any>(URI, payload, this.httpOptions);
   }
 
+  verifyUser(userId: any, payload: any) {
+    const URI = `${this.accountsSvc}users/${userId}/verify-user`;
+    return this.httpClient.put<any>(URI, payload, this.httpOptions);
+  }
+
 }
