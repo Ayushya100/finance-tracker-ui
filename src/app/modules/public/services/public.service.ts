@@ -22,6 +22,11 @@ export class PublicService {
     }
   }
 
+  getSystemSetup() {
+    const URI = `${this.accountsSvc}users/system-setup`;
+    return this.httpClient.get<any>(URI, this.httpOptions);
+  }
+
   registerUser(payload: any) {
     const URI = `${this.accountsSvc}users/register-user`;
     return this.httpClient.post<any>(URI, payload, this.httpOptions);

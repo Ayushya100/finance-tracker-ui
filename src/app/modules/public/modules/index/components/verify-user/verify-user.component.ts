@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 // Services
+import { PublicService } from 'src/app/modules/public/services/public.service';
 import { I18nService } from 'src/app/modules/shared/services/i18n.service';
-import { PublicService } from '../../services/public.service';
 import { NotificationService } from 'src/app/modules/shared/services/notification.service';
 
 @Component({
@@ -53,5 +53,5 @@ export class VerifyUserComponent implements OnInit {
       }
     });
   }
-
+  
 }

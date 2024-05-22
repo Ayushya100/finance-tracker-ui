@@ -8,6 +8,9 @@ import { BASE_PATH } from 'src/app/app.tokens';
 })
 export class I18nService {
 
+  private appTitle$ = new BehaviorSubject<string>('');
+  private appQuote$ = new BehaviorSubject<string>('');
+
   private userSetupSubject: BehaviorSubject<any> = new BehaviorSubject<any>('');
   public setupData = this.userSetupSubject.asObservable();
 
@@ -21,35 +24,33 @@ export class I18nService {
     if (this.basePath) {
       this.accountsSvc = this.basePath + this.accountsSvc;
     }
-    this.fetchSystemSetup();
   }
 
   refreshUserSetup(setup: any) {
-    this.fetchSystemSetup();
+    this.fetchSystemSetup(setup);
   }
 
   getUserSetup(): Observable<any> {
     return this.setupData;
   }
 
-  fetchSystemSetup() {
-    const URI = `${this.accountsSvc}users/system-setup`;
-    this.httpClient.get<any>(URI).subscribe({
-      next: (res) => {
-        this.userSetupSubject.next(res);
-        
-        const userLang = res.data?.filter((val: any) => val.categoryName === 'user-language').map((val: any) => val.default)[0];
-        this.httpClient.get<any>(`${this.translationURI}/${userLang}.json`).subscribe({
-          next: (translations) => {
-            this.translationCache.next(translations);
-          },
-          error: (err) => {
-            console.error(`Failed to load the translation data : ${err}`);
-          }
-        })
+  loadSystemHeader(systemSetup: any) {
+    const title = systemSetup?.filter((val: any) => val.categoryName === 'application-title').map((val: any) => val.value)[0];
+    const appQuote = systemSetup?.filter((val: any) => val.categoryName === 'application-quote').map((val: any) => val.value)[0];
+
+    this.appTitle$.next(title);
+    this.appQuote$.next(appQuote);
+  }
+
+  fetchSystemSetup(systemSetup: any) {
+    this.userSetupSubject.next(systemSetup);
+    const userLang = systemSetup?.filter((val: any) => val.categoryName === 'user-language').map((val: any) => val.value)[0];
+    this.httpClient.get<any>(`${this.translationURI}/${userLang}.json`).subscribe({
+      next: (translations) => {
+        this.translationCache.next(translations);
       },
       error: (err) => {
-        console.error(`Failed to fetch user setup : ${err}`);
+        console.error(`Failed to load the translation data : ${err}`);
       }
     });
   }
