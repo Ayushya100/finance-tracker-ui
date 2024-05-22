@@ -3,12 +3,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 // Services
 import { I18nService } from 'src/app/modules/shared/services/i18n.service';
-import { PublicService } from '../../services/public.service';
+import { PublicService } from 'src/app/modules/public/services/public.service';
 import { NotificationService } from 'src/app/modules/shared/services/notification.service';
 
 // Utils
-import { UserFormsUtils } from '../../utils';
 import { RegexPatterns } from 'src/app/modules/shared/modules/pattern-validators';
+import { UserFormsUtils } from 'src/app/modules/public/utils';
 
 @Component({
   selector: 'app-register-user',

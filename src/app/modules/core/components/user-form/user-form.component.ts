@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 // Services
-import { I18nService } from 'src/app/modules/shared/services/i18n.service';
+import { ThemeService } from 'src/app/modules/shared/services/theme.service';
 
 @Component({
   selector: 'app-user-form',
@@ -26,19 +26,15 @@ export class UserFormComponent implements OnInit {
   hidePasswordIcon: string = '';
   showPasswordIcon: string = '';
 
-  constructor(private i18n: I18nService) { }
+  constructor(private themeService: ThemeService) { }
 
   ngOnInit(): void {
-    this.i18n.getUserSetup().subscribe({
-      next: (userSetup: any) => {
-        this.userTheme = userSetup.data?.filter((val: any) => val.categoryName === 'user-theme').map((val: any) => val.default)[0];
-        this.hidePasswordIcon = `assets/img/${this.userTheme}-closed-eye.png`;
-        this.showPasswordIcon = `assets/img/${this.userTheme}-open-eye.png`;
-      },
-      error: (err: any) => {
-        console.error(`Failed to load the system setup : ${err}`);
+    this.themeService.userTheme.subscribe(
+      data => {
+        this.hidePasswordIcon = `assets/img/${data}-closed-eye.png`;
+        this.showPasswordIcon = `assets/img/${data}-open-eye.png`;
       }
-    });
+    );
   }
 
   togglePasswordVisibility(): void {

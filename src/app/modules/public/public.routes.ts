@@ -1,22 +1,18 @@
 import { Routes } from '@angular/router';
 
-// Components
-import { RegisterUserComponent } from './components/register-user/register-user.component';
-import { VerifyUserComponent } from './components/verify-user/verify-user.component';
-import { LoginUserComponent } from './components/login-user/login-user.component';
+// Component
+import { CoreComponent } from './components/core/core.component';
+
+// Module
+import { PublicIndexRoutes } from './modules/index/index.routes';
+import { SystemSetupResolver } from './guards/system-setup.resolver';
 
 export const publicRoutes: Routes = [
     {
-        path: 'register-user', component: RegisterUserComponent,
-        pathMatch: 'full'
-    },
-    {
-        path: 'verify-user/:userId/:code', component: VerifyUserComponent,
-        pathMatch: 'full'
-    },
-    {
-        path: 'signup-user', component: LoginUserComponent,
-        pathMatch: 'full'
+        path: '', component: CoreComponent, resolve: { setup: SystemSetupResolver },
+        children: [
+            ...PublicIndexRoutes
+        ]
     },
     {
         path: '**', redirectTo: 'register-user'
