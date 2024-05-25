@@ -54,5 +54,26 @@
                 "Password is required": "Password is required"
             }
         }
+    },
+    "userSection": {
+        "userMenu": {
+            "utils": {
+                "User Profile": "User Profile",
+                "User Setup": "User Setup",
+                "Home": "Home",
+                "Expenditure": "Expenditure",
+                "Funds": "Funds",
+                "Investment": "Investment",
+                "Add Tags": "Add Tags",
+                "Register Expense": "Register Expense",
+                "Register Credit Expense": "Register Credit Expense",
+                "Add Funds": "Add Funds",
+                "Register Investment": "Register Investment",
+                "Dashboard": "Dashboard",
+                "Reports": "Reports",
+                "Logout": "Logout",
+                "How to use the portal": "How to use the portal?"
+            }
+        }
     }
 }

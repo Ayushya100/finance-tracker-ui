@@ -40,9 +40,9 @@
 .card-color {
     background-color: #161616;
 }
-.icon-color {
+/* .icon-color {
     color: #8D8D8D;
-}
+} */
 
 .form-controller {
     background-color: #000000;
@@ -63,4 +63,69 @@
         --mat-mdc-snack-bar-button-color: #ff3333;
         --mdc-snackbar-supporting-text-color: #ff3333;
     }
+}
+
+.main-background {
+    background-color: #020202;
+    color: #C0BFC4;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    color: #1DC1A8;
+}
+
+.sidebar {
+    background-color: #111111;
+    color: #79787D;
+}
+.navbar {
+    background-color: #0e0e0e;
+    color: #79787D;
+}
+.sidebar-link {
+    color: #b4b4b4;
+}
+.sidebar-link:hover {
+    color: #919191;
+    transition: 0.2s ease-in-out;
+}
+
+.sec-navbar {
+    background-color: #0a0a0a;
+    color: #79787D;
+}
+
+.card {
+    background-color: #232227;
+    color: #79787D;
+    border-color: #212123;
+}
+.card-header {
+    color: #EEEEF0;
+}
+
+.button {
+    background-color: #272727;
+    border-color: #151515;
+    color: #A0A0A0;
+}
+.button:hover {
+    background-color: #222222;
+    border-color: #1a1a1a;
+    transition: 0.2s ease-in-out;
+}
+.active-button {
+    border-color: #1DC1A8;
+    color: #1DC1A8;
+}
+
+.icon-color {
+    color: #A0A0A0;
+}
+.icon-color:hover {
+    color: #8d8d8d;
+}
+.active-icon-color {
+    color: #1DC1A8;
 }

@@ -5,9 +5,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PublicService } from 'src/app/modules/public/services/public.service';
 import { I18nService } from 'src/app/modules/shared/services/i18n.service';
 import { NotificationService } from 'src/app/modules/shared/services/notification.service';
+import { AuthService } from 'src/app/modules/user/services/auth.service';
 
 // Utils
 import { UserFormsUtils } from 'src/app/modules/public/utils';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-user',
@@ -32,7 +34,9 @@ export class LoginUserComponent implements OnInit {
     private publicService: PublicService,
     private userFormsUtils: UserFormsUtils,
     private notificationService: NotificationService,
-    private fb: FormBuilder
+    private authService: AuthService,
+    private fb: FormBuilder,
+    private router: Router
   ) {
     this.userLoginForm = this.fb.group({
       userName: ['', Validators.required],
@@ -60,6 +64,12 @@ export class LoginUserComponent implements OnInit {
     this.publicService.loginUser(payload).subscribe({
       next: (res: any) => {
         this.notificationService.successMessage(res.message, res.statusCode);
+        this.authService.setUserToken(res.data.accessToken);
+        this.authService.setUserId(res.data.userId);
+        this.authService.setUserRole(res.data.userRole);
+        this.authService.setUserScope(res.data.userScopes);
+        this.authService.setUserSetup(res.data.userSetup);
+        this.router.navigate(['/user']);
       },
       error: (err: any) => {
         this.notificationService.errorMessage(err.error.errors, err.error.statusCode);
