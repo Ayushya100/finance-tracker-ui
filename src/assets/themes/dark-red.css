@@ -1,0 +1,79 @@
+.main-background {
+    background-color: #1A1A1A;
+    color: #E0E0E0;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    color: #bb0000;
+}
+
+.sidebar {
+    background-color: #1A1A1A;
+    color: #E0E0E0;
+}
+
+/* .sidebar .active {
+    background-color: #333333;
+    color: #FF4C4C;
+} */
+
+.navbar {
+    background-color: #1A1A1A;
+    color: #E0E0E0;
+}
+
+.navbar a {
+    color: #E0E0E0;
+}
+
+/* .navbar a:hover, .navbar a.active {
+    background-color: #333333;
+    color: #FF4C4C;
+} */
+
+.main-content {
+    background-color: #1A1A1A;
+    color: #E0E0E0;
+}
+
+.card {
+    background-color: #333333;
+    color: #E0E0E0;
+    border: 1px solid #444444;
+}
+
+/* .card-heading {
+    color: #FF4C4C;
+    font-size: 1.5em;
+}
+
+.card-text {
+    color: #E0E0E0;
+    font-size: 1em;
+}
+
+h1 {
+    color: #FF4C4C;
+    font-size: 2em;
+}
+
+a {
+    color: #FF4C4C;
+}
+
+a:hover {
+    color: #FF6F61;
+}
+
+button {
+    background-color: #FF4C4C;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #FF6F61;
+} */

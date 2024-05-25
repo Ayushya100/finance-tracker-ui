@@ -7,8 +7,8 @@ import { userRoutes } from './modules/user/user.routes';
 import { sharedRoutes } from './modules/shared/shared.routes';
 
 const routes: Routes = [
-  ...publicRoutes,
   ...userRoutes,
+  ...publicRoutes,
   ...sharedRoutes
 ];
 

@@ -1,0 +1,121 @@
+<div class="flex flex-col h-screen main-background">
+    <!-- Top navbar -->
+    <div class="navbar shadow-lg p-4 flex justify-between items-center w-full">
+        <div class="header text-xl font-bold">Finance Tracker</div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex flex-1 overflow-hidden">
+        <!-- Sidebar -->
+        <div [ngClass]="{'w-64': isSidebarOpen, 'w-0': !isSidebarOpen, 'overflow-hidden': !isSidebarOpen}" class="sidebar shadow-lg transition-all duration-300 ease-in-out py-3 hidden flex-col justify-between overflow-auto md:flex">
+            <ng-container *ngTemplateOutlet="sidenav"></ng-container>
+        </div>
+        <div [ngClass]="{'w-64': !isSidebarOpen, 'w-0': isSidebarOpen, 'overflow-hidden': isSidebarOpen}" class="sidebar shadow-lg transition-all duration-300 ease-in-out py-3 flex flex-col justify-between overflow-auto md:hidden">
+            <ng-container *ngTemplateOutlet="sidenav"></ng-container>
+        </div>
+
+        <ng-template #sidenav>
+            <div class="section-1">
+                <div class="flex justify-center">
+                    <img src="assets/img/dummy-user.png" alt="" class="w-[50%] profile-img">
+                </div>
+                <div class="mt-4 flex justify-center">
+                    <div class="w-50">
+                        <div class="font-bold text-[14px]">{{ name }}</div>
+                        <div class="font-bold text-[14px]">{{ userName }}</div>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="flex justify-center space-x-4">
+                        <div *ngFor="let section of headerSection">
+                            <button class="h-10 w-10 rounded-sm button shadow items-center" [matTooltip]="section.title" matTooltipPosition="after">
+                                <mat-icon class="mt-1.5" [ngClass]="{'active-icon-color': isActive(section), 'icon-color': !isActive(section)}" [fontIcon]="section.icon"></mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <div class="p-4">
+                        <div *ngFor="let section of sections" class="mb-2">
+                            <button *ngIf="section.type === 'parent'" (click)="toggleSection(section)" class="sidebar sidebar-link text-left font-bold p-2 w-full rounded-sm flex items-center">
+                                <mat-icon [fontIcon]="section.icon"></mat-icon>
+                                <div class="mt-0.5 ml-2 text-[15px]">
+                                    {{ section.title }}
+                                </div>
+                            </button>
+                            <a *ngIf="section.type === 'link'" [routerLink]="section.link" [ngClass]="{'header': isActive(section), 'sidebar-link': !isActive(section)}" class="font-bold p-2 rounded-sm flex items-center">
+                                <mat-icon [fontIcon]="section.icon"></mat-icon>
+                                <div class="mt-0.5 ml-2 text-[15px]">
+                                    {{ section.title }}
+                                </div>
+                            </a>
+                            <div *ngIf="section.open && section.children" class="pl-4 transition-max-height duration-300 ease-in-out max-h-96 overflow-hidden">
+                                <ul>
+                                    <li *ngFor="let subSection of section.children">
+                                        <a [routerLink]="subSection.link" [ngClass]="{'header': isActive(subSection), 'sidebar-link': !isActive(subSection)}" class="p-2 rounded-sm flex items-center">
+                                            <mat-icon [fontIcon]="subSection.icon"></mat-icon>
+                                            <div class="mt-0.5 ml-2 text-[15px]">
+                                                {{ subSection.title }}
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-2">
+                <div class="p-4">
+                    <a class="p-2 rounded-sm flex items-center">
+                        <mat-icon fontIcon="help"></mat-icon>
+                        <div class="ml-2 font-bold text-[15px]">
+                            {{ queryHeading }}
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </ng-template>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col">
+            <!-- Secondary navbar -->
+            <div class="sec-navbar shadow-lg p-2 pl-2 flex items-center">
+                <div class="hidden md:block">
+                    <div *ngIf="isSidebarOpen" class="mt-2">
+                        <button (click)="toggleSidebar()">
+                            <mat-icon class="combine-icon-left" fontIcon="chevron_left"></mat-icon>
+                            <mat-icon fontIcon="menu"></mat-icon>
+                        </button>
+                    </div>
+                    <div *ngIf="!isSidebarOpen" class="mt-2">
+                        <button (click)="toggleSidebar()">
+                            <mat-icon class="combine-icon-left" fontIcon="menu"></mat-icon>
+                            <mat-icon fontIcon="chevron_right"></mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <div *ngIf="!isSidebarOpen" class="mt-2">
+                        <button (click)="toggleSidebar()">
+                            <mat-icon class="combine-icon-left" fontIcon="chevron_left"></mat-icon>
+                            <mat-icon fontIcon="menu"></mat-icon>
+                        </button>
+                    </div>
+                    <div *ngIf="isSidebarOpen" class="mt-2">
+                        <button (click)="toggleSidebar()">
+                            <mat-icon class="combine-icon-left" fontIcon="menu"></mat-icon>
+                            <mat-icon fontIcon="chevron_right"></mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <div class="text-[14px] font-semibold pl-4">{{ selectedRouterHeading }}</div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="flex-1 p-4 overflow-auto">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>

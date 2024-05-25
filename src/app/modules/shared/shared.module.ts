@@ -11,6 +11,9 @@ import { NotificationService } from './services/notification.service';
 
 // Modules
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [],
@@ -21,7 +24,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatSidenavModule
   ],
   providers: [
     I18nService,
@@ -33,7 +39,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatSidenavModule
   ]
 })
 export class SharedModule { }
