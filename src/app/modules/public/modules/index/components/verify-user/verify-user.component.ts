@@ -46,10 +46,10 @@ export class VerifyUserComponent implements OnInit {
 
     this.publicService.verifyUser(userId, {verificationCode}).subscribe({
       next: (res: any) => {
-        this.notificationService.successMessage(res.message, res.statusCode);
+        this.notificationService.success(res);
       },
       error: (err: any) => {
-        this.notificationService.errorMessage(err.error.errors, err.error.statusCode);
+        this.notificationService.error(err);
       }
     });
   }

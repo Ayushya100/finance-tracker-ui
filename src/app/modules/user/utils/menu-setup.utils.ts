@@ -16,19 +16,19 @@ export class MenuSetupUtils {
             {
                 type: 'link',
                 title: await this.i18n.translate(`${this.menuPrefix}User Profile`),
-                link: '/user/user-profile',
+                link: '/user-profile',
                 icon: 'create'
             },
             {
                 type: 'link',
                 title: await this.i18n.translate(`${this.menuPrefix}User Setup`),
-                link: '/user/user-setup',
+                link: '/user-setup',
                 icon: 'settings'
             },
             {
                 type: 'link',
                 title: await this.i18n.translate(`${this.menuPrefix}Logout`),
-                link: '',
+                link: '/logout',
                 icon: 'logout'
             }
         ];
@@ -40,7 +40,7 @@ export class MenuSetupUtils {
                 type: 'link',
                 title: await this.i18n.translate(`${this.menuPrefix}Home`),
                 open: false,
-                link: '/user',
+                link: '/',
                 icon: 'home',
                 children: null
             },
@@ -55,21 +55,21 @@ export class MenuSetupUtils {
                         type: 'link',
                         title: await this.i18n.translate(`${this.menuPrefix}Add Tags`),
                         open: false,
-                        link: '/user/expenditure/add-tags',
+                        link: '/expenditure/add-tags',
                         icon: 'add'
                     },
                     {
                         type: 'link',
                         title: await this.i18n.translate(`${this.menuPrefix}Register Expense`),
                         open: false,
-                        link: '/user/expenditure/register-expense',
+                        link: '/expenditure/register-expense',
                         icon: 'payments'
                     },
                     {
                         type: 'link',
                         title: await this.i18n.translate(`${this.menuPrefix}Register Credit Expense`),
                         open: false,
-                        link: '/user/expenditure/register-credit-expense',
+                        link: '/expenditure/register-credit-expense',
                         icon: 'credit_card'
                     }
                 ]
@@ -85,14 +85,14 @@ export class MenuSetupUtils {
                         type: 'link',
                         title: await this.i18n.translate(`${this.menuPrefix}Add Tags`),
                         open: false,
-                        link: '/user/funds/add-tags',
+                        link: '/funds/add-tags',
                         icon: 'add'
                     },
                     {
                         type: 'link',
                         title: await this.i18n.translate(`${this.menuPrefix}Add Funds`),
                         open: false,
-                        link: '/user/funds/add-funds',
+                        link: '/funds/add-funds',
                         icon: 'attach_money'
                     }
                 ]
@@ -108,14 +108,14 @@ export class MenuSetupUtils {
                         type: 'link',
                         title: await this.i18n.translate(`${this.menuPrefix}Add Tags`),
                         open: false,
-                        link: '/user/investment/add-tags',
+                        link: '/investment/add-tags',
                         icon: 'add'
                     },
                     {
                         type: 'link',
                         title: await this.i18n.translate(`${this.menuPrefix}Register Investment`),
                         open: false,
-                        link: '/user/investment/register-investment',
+                        link: '/investment/register-investment',
                         icon: 'timeline'
                     }
                 ]
@@ -124,7 +124,7 @@ export class MenuSetupUtils {
                 type: 'link',
                 title: await this.i18n.translate(`${this.menuPrefix}Dashboard`),
                 open: false,
-                link: '/user/dashboard',
+                link: '/dashboard',
                 icon: 'analytics',
                 children: null
             },
@@ -132,7 +132,7 @@ export class MenuSetupUtils {
                 type: 'link',
                 title: await this.i18n.translate(`${this.menuPrefix}Reports`),
                 open: false,
-                link: '/user/report',
+                link: '/report',
                 icon: 'assignment',
                 children: null
             }

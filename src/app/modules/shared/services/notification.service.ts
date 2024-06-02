@@ -18,6 +18,14 @@ export class NotificationService {
     });
   }
 
+  success(res: any) {
+    this.successMessage(res.message, res.statusCode);
+  }
+
+  error(err: any) {
+    this.errorMessage(err.error.errors, err.error.statusCode);
+  }
+
   successMessage(msg: string, code? : number) {
     this.openNotificationSnackbar('success-notification', msg, code || 200);
   }

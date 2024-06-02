@@ -7,12 +7,14 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class AuthService {
 
   private readonly TOKEN_KEY = 'userToken';
+  private readonly REFRESH_KEY = 'refreshToken';
   private readonly USER_ID = 'userId';
   private readonly USER_ROLE = 'userRole';
   private readonly USER_SCOPE = 'userScope';
   private readonly USER_SETUP = 'userSetup';
 
   private userToken: string | null = null;
+  private refreshToken: string | null = null;
   private userId: string | null = null;
   private userRole: string | null = null;
   private userScope: any | null = null;
@@ -27,6 +29,7 @@ export class AuthService {
 
   private loadAuthData(): void {
     this.userToken = localStorage.getItem(this.TOKEN_KEY);
+    this.refreshToken = localStorage.getItem(this.REFRESH_KEY);
     this.userId = localStorage.getItem(this.USER_ID);
     this.userRole = localStorage.getItem(this.USER_ROLE);
     this.userScope = localStorage.getItem(this.USER_SCOPE);
@@ -37,6 +40,11 @@ export class AuthService {
   setUserToken(token: string): void {
     this.userToken = token;
     localStorage.setItem(this.TOKEN_KEY, this.userToken);
+  }
+
+  setRefreshToken(token: string): void {
+    this.refreshToken = token;
+    localStorage.setItem(this.REFRESH_KEY, this.refreshToken);
   }
 
   setUserId(userId: string): void {
@@ -67,6 +75,10 @@ export class AuthService {
     return this.userToken;
   }
 
+  getRefreshToken(): string | null {
+    return this.refreshToken;
+  }
+
   getUserId(): string | null {
     return this.userId;
   }
@@ -85,10 +97,15 @@ export class AuthService {
 
   clearAuthData(): void {
     this.userToken = null;
+    this.refreshToken = null;
+    this.userId = null;
     this.userRole = null;
     this.userScope = null;
     this.userSetup = null;
+    
     localStorage.removeItem(this.TOKEN_KEY);
+    localStorage.removeItem(this.REFRESH_KEY);
+    localStorage.removeItem(this.USER_ID);
     localStorage.removeItem(this.USER_ROLE);
     localStorage.removeItem(this.USER_SCOPE);
     localStorage.removeItem(this.USER_SETUP);

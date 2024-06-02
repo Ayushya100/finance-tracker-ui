@@ -63,16 +63,17 @@ export class LoginUserComponent implements OnInit {
     
     this.publicService.loginUser(payload).subscribe({
       next: (res: any) => {
-        this.notificationService.successMessage(res.message, res.statusCode);
+        this.notificationService.success(res);
         this.authService.setUserToken(res.data.accessToken);
+        this.authService.setRefreshToken(res.data.refreshToken);
         this.authService.setUserId(res.data.userId);
         this.authService.setUserRole(res.data.userRole);
         this.authService.setUserScope(res.data.userScopes);
         this.authService.setUserSetup(res.data.userSetup);
-        this.router.navigate(['/user']);
+        this.router.navigate([`/user/${res.data.userId}`]);
       },
       error: (err: any) => {
-        this.notificationService.errorMessage(err.error.errors, err.error.statusCode);
+        this.notificationService.error(err);
       }
     });
   }
