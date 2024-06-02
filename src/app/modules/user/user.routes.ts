@@ -3,14 +3,16 @@ import { Routes } from '@angular/router';
 // Components
 import { CoreComponent } from './components/core/core.component';
 
-// Modules
+// Routes
 import { userIndexRoutes } from './modules/index/index.routes';
+import { userProfileRoutes } from './modules/user/userProfile.routes';
 
 export const userRoutes: Routes = [
     {
-        path: 'user', component: CoreComponent,
+        path: 'user/:userId', component: CoreComponent,
         children: [
-            ...userIndexRoutes
+            ...userIndexRoutes,
+            ...userProfileRoutes
         ]
     }
 ];

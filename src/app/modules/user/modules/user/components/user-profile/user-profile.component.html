@@ -1,0 +1,75 @@
+<div class="w-full h-full rounded-sm">
+    <div class="grid grid-cols-1 lg:grid-cols-2 lg:h-full gap-4">
+        <div class="card">
+            <div class="grid grid-cols-2 mt-10">
+                <div class="flex justify-center" [ngClass]="{'col-span-1': imageHeaderSpan === 1, 'col-span-2': imageHeaderSpan === 2}">
+                    <img [src]="previewImg" alt="" class="profile-img w-[180px] h-[170px]" [ngClass]="{'w-8/12': imageHeaderSpan === 1, 'w-4/12': imageHeaderSpan === 2}">
+                </div>
+                <div class="flex flex-col items-center justify-center" *ngIf="imageHeaderSpan === 1">
+                    <div class="text-[16x] font-normal card-header">{{ imageHeader }}</div>
+                    <input type="file" id="imageInput" accept="image/*" (change)="onFileSelected($event)" hidden>
+                    <div class="flex align-middle gap-4">
+                        <div *ngFor="let action of userImgActions">
+                            <button class="button h-10 text-[16px] mt-4 rounded-sm" (click)="triggerImgAction(action)">{{ action.label }}</button>
+                        </div>
+                    </div>
+
+                    <div *ngIf="fileName">
+                        <div class="card-header text-[12px] font-normal mt-6" [matTooltip]="fileName">{{ preview }}: {{ fileName }}</div>
+                        <div class="flex align-middle justify-center mt-2 space-x-4 text-lg">
+                            <mat-icon fontIcon="upload" class="cursor-pointer success-btn" [matTooltip]="confirmUpload" (click)="updateImage()"></mat-icon>
+                            <mat-icon fontIcon="delete" class="cursor-pointer delete-btn" [matTooltip]="cancelUpload" (click)="cancelImageUpload()"></mat-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="px-5 mt-5">
+                <form [formGroup]="userBioForm">
+                    <div *ngFor="let field of userBioField?.fields">
+                        <div class="flex items-center justify-center">
+                            <div class="text-[16px] font-bold card-header">{{ field.label }}</div>
+                        </div>
+                        <textarea class="mt-4 p-2 w-full rounded-sm form-field" rows="5" [placeholder]="field.placeholder" [formControlName]="field.field" [readonly]="field.readonly"></textarea>
+                    </div>
+                    <div *ngFor="let action of userBioActions">
+                        <button class="button h-10 text-[16px] my-4 rounded-sm" (click)="onUserBioSubmit()">{{ action.label }}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="overflow-auto">
+            <div class="card py-5 px-10 mb-4" *ngIf="userInfo">
+                <app-user-details-form
+                    [title]="userFormTitle"
+                    [actions]="userFieldActions"
+                    [form]="userForm"
+                    [formDetails]="userFields?.fields"
+                    [formData]="userInfo"
+                    (formSubmitData)="onUserInfoSubmit($event)">
+                </app-user-details-form>
+            </div>
+
+            <div class="card py-5 px-10 mb-4">
+                <app-user-details-form
+                    [title]="userPasswordTitle"
+                    [actions]="userPasswordActions"
+                    [form]="userPasswordForm"
+                    [formDetails]="userPasswordFields?.fields"
+                    (formSubmitData)="onUserPasswordSubmit($event)">
+                </app-user-details-form>
+            </div>
+
+            <div *ngIf="deletePermission">
+                <div class="card py-5 px-10 mb-4">
+                    <div class="text-[18px] card-header font-semibold">{{ deleteAccHeader }}</div>
+                    <div class="border-b-2 my-3 line"></div>
+                    <div class="card-header text-sm">{{ deleteAccInfo }}</div>
+                    <div class="card-header text-sm mt-2">{{ proceedMsg }}</div>
+                    <button class="delete-button h-10 w-[100px] text-[16px] mt-4 rounded-sm" (click)="openDeleteForm()">{{ deleteBtnHeader }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

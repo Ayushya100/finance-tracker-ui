@@ -1,0 +1,33 @@
+<div class="flex justify-between items-center">
+    <div class="text-[18px] card-header font-semibold">{{ title }}</div>
+    <div class="flex align-middle gap-4">
+        <div *ngFor="let action of actions">
+            <div *ngIf="action.type === 'submit'; else otherBtn">
+                <button class="button h-10 text rounded-sm" (click)="onClickFormAction(action.type)" [disabled]="!form.valid" [ngClass]="{'disabled-button': !form.valid}">{{ action.label }}</button>
+            </div>
+            <ng-template #otherBtn>
+                <button class="button h-10 text rounded-sm" (click)="onClickFormAction(action.type)">{{ action.label }}</button>
+            </ng-template>
+        </div>
+    </div>
+</div>
+<div class="border-b-2 my-3 line"></div>
+
+<form [formGroup]="form">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div *ngFor="let formField of formDetails" [ngClass]="{'col-span-1': formField.span === 1, 'col-span-2': formField.span === 2}">
+            <div class="my-1">
+                <p class="card-header text-sm pl-2">{{ formField.label }} <span *ngIf="formField.required" style="color: red;">*</span></p>
+                <div *ngIf="formField.type != 'password'; else passwordField">
+                    <input class="form-field w-full min-h-10 rounded-sm px-4" [type]="formField.type" [placeholder]="formField.placeholder" [formControlName]="formField.field" [required]="formField.required" [readonly]="formField.readonly">
+                </div>
+                <ng-template class="flex items-center" #passwordField>
+                    <input class="form-field w-11/12 min-h-10 rounded-sm px-4 flex-1" [type]="hidePassword ? 'password' : 'text'" [placeholder]="formField.placeholder" [formControlName]="formField.field" [required]="formField.required" [readonly]="formField.readonly">
+                    <button class="form-field align-middle cursor-pointer w-1/12 flex-none h-10 mb-1 rounded-sm" (click)="togglePasswordVisibility()">
+                        <mat-icon [fontIcon]="hidePassword? 'visibility' : 'visibility_off'"></mat-icon>
+                    </button>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</form>

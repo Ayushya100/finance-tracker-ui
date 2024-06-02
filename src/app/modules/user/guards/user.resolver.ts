@@ -37,7 +37,7 @@ export class UserResolver implements Resolve<any> {
         return userData.userRecord;
       },
       error: (err: any) => {
-        this.notificationService.errorMessage(err.error.errors, err.error.statusCode);
+        this.notificationService.error(err);
       }
     });
   }

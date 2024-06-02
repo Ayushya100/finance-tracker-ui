@@ -75,49 +75,86 @@
     color: #1DC1A8;
 }
 
-.sidebar {
-    background-color: #111111;
-    color: #79787D;
-}
 .navbar {
-    background-color: #0e0e0e;
+    backdrop-filter: blur(21px);
+    -webkit-backdrop-filter: blur(21px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
     color: #79787D;
 }
+.secondary-navbar {
+    backdrop-filter: blur(21px);
+    -webkit-backdrop-filter: blur(21px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+    color: #cccccc;
+}
+
+.sidebar {
+    color: #cccccc;
+}
+.sidebar-bg {
+    backdrop-filter: blur(21px);
+    -webkit-backdrop-filter: blur(21px);
+    border-right: 1px solid rgb(255, 155, 155, 0.16);
+}
+
 .sidebar-link {
-    color: #b4b4b4;
+    color: #cccccc;
 }
 .sidebar-link:hover {
-    color: #919191;
+    color: #f5f5f5;
     transition: 0.2s ease-in-out;
 }
 
-.sec-navbar {
-    background-color: #0a0a0a;
-    color: #79787D;
-}
-
 .card {
-    background-color: #232227;
-    color: #79787D;
-    border-color: #212123;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.055),
+        rgba(255, 255, 255, 0.055)
+    );
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+    border: 1px solid rgb(255, 155, 155, 0.16);
+    border-radius: 5px;
 }
 .card-header {
-    color: #EEEEF0;
+    color: whitesmoke;
 }
 
 .button {
-    background-color: #272727;
-    border-color: #151515;
-    color: #A0A0A0;
+    background-color: #1d1d1d;
+    border-color: #1f1f1f;
+    box-shadow: 0 8px 32px 0 rgba(31, 31, 31, 0.36);
+    color: #cccccc;
+    transition: 0.2s;
 }
 .button:hover {
     background-color: #222222;
     border-color: #1a1a1a;
     transition: 0.2s ease-in-out;
 }
+
+.disabled-button:hover {
+    background-color: #272727;
+    border-color: #151515;
+    color: #A0A0A0;
+}
 .active-button {
-    border-color: #1DC1A8;
-    color: #1DC1A8;
+    color: #058169;
+    border: 1px solid #058169;
+}
+
+.delete-button {
+    background-color: #720808;
+    border-color: #5B0A09;
+    box-shadow: 0 8px 32px 0 rgba(31, 31, 31, 0.36);
+    color: #cccccc;
+    transition: 0.2s;
+}
+.delete-button:hover {
+    background-color: #500A0A;
+    border-color: #340A0B;
+    transition: 0.2s ease-in-out;
 }
 
 .icon-color {
@@ -128,4 +165,33 @@
 }
 .active-icon-color {
     color: #1DC1A8;
+}
+
+.form-field {
+    background-color: rgba(10, 10, 10, 0.5);
+    color: #cccccc;
+}
+
+.line {
+    border-color: #272727;
+}
+
+.popup-container {
+    background-color: #1b1b1b;
+    color: whitesmoke;
+}
+::ng-deep .popup-container {
+    background-color: transparent !important;
+}
+.popup-button {
+    background-color: #0a0a0a80;
+    border-color: #0a0a0a;
+    box-shadow: 0 8px 32px 0 #0a0a0a80;
+    color: #cccccc;
+    transition: 0.2s;
+}
+.popup-button:hover {
+    background-color: #0e0e0e;
+    border-color: #0f0f0f;
+    transition: 0.2s ease-in-out;
 }

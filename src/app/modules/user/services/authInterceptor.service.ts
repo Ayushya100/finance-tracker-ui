@@ -1,20 +1,28 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, finalize, Observable, switchMap, throwError } from 'rxjs';
+
+// Services
 import { AuthService } from './auth.service';
+import { UserService } from './user.service';
+import { LoaderService } from '../../shared/services/loader.service';
+import { NotificationService } from '../../shared/services/notification.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthInterceptorService implements HttpInterceptor {
 
-  constructor(private authService: AuthService) { }
+    constructor(
+        private authService: AuthService,
+        private userService: UserService,
+        private notificationService: NotificationService,
+        private loaderService: LoaderService
+    ) { }
 
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token = this.authService.getUserToken();
-        const role = this.authService.getUserRole();
-        const scope = this.authService.getUserScope();
-        const setup = this.authService.getUserSetup();
+    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        this.loaderService.show();
+        const token = this.authService.getUserToken();
 
         let modifiedReq = req;
         if (token) {
@@ -25,17 +33,41 @@ export class AuthInterceptorService implements HttpInterceptor {
             });
         }
 
-        if (role || scope || setup) {
-            modifiedReq = modifiedReq.clone({
-                body: {
-                    ...req.body,
-                    role: role,
-                    scope: scope,
-                    setup: setup
+        return next.handle(modifiedReq).pipe(
+            catchError(err => {
+                this.notificationService.error(err);
+                if (err.error.statusCode === 401 && err.error.errors === 'UNAUTHORIZED ACCESS - TOKEN EXPIRED') {
+                    return this.refreshTokenAndRetry(req, next);
                 }
-            });
-        }
+                return throwError(() => err);
+            }),
+            finalize(() => {
+                this.loaderService.hide();
+            })
+        );
+    }
 
-        return next.handle(modifiedReq);
-  }
+    refreshTokenAndRetry(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        return this.userService.refreshToken().pipe(
+            switchMap((res: any) => {
+                this.notificationService.success(res);
+
+                const token = res.data.accessToken;
+                const refreshToken = res.data.refreshToken;
+                this.authService.setUserToken(token);
+                this.authService.setRefreshToken(refreshToken);
+
+                const newReq = req.clone({
+                    setHeaders: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                return next.handle(newReq);
+            }),
+            catchError(err => {
+                this.notificationService.error(err);
+                return throwError(() => err);
+            })
+        );
+    }
 }

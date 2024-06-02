@@ -74,6 +74,57 @@
                 "Logout": "Logout",
                 "How to use the portal": "How to use the portal?"
             }
+        },
+        "userProfile": {
+            "component": {
+                "Upload delete profile image": "Upload / Delete profile image",
+                "Upload new profile image": "Upload new profile image",
+                "Basic Info": "Basic Info",
+                "Change Password": "Change Password",
+                "Delete Account": "Delete Account",
+                "Confirm Deletion": "Confirm Deletion",
+                "Upload": "Upload",
+                "Update": "Update",
+                "Cancel": "Cancel",
+                "Delete": "Delete",
+                "Submit": "Submit"
+            },
+            "utils": {
+                "Bio": "Biography",
+                "Write some details about you": "Write some details about you",
+                "First Name": "First Name",
+                "Enter First Name": "Enter First Name",
+                "Last Name": "Last Name",
+                "Enter Last Name": "Enter Last Name",
+                "Username": "Username",
+                "Enter your username": "Enter your username",
+                "Email Id": "Email Id",
+                "Enter your emailId": "Enter your emailId",
+                "Gender": "Gender",
+                "Provide your gender": "Provide your gender",
+                "DOB": "DOB",
+                "Choose DOB": "Choose DOB",
+                "Contact Number": "Contact Number",
+                "Enter your contact number": "Enter your contact number",
+                "Old Password": "Old Password",
+                "Enter your current password": "Enter your current password",
+                "New Password": "New Password",
+                "Provide your new password": "Provide your new password",
+                "Password": "Password",
+                "Enter your Password": "Enter your Password"
+            },
+            "message": {
+                "Preview": "Preview",
+                "Confirm Upload": "Confirm Upload",
+                "Cancel Upload": "Cancel Upload",
+                "User id not found": "User id not found",
+                "Delete Account details": "Once you confirm the deletion of your account, it will be deactivated for 30 days. During this period, you can reactivate your account if you change your mind. After 30 days, your account will be permanently deleted, and all data will be irretrievable.",
+                "Are you sure you want to proceed": "Are you sure you want to proceed?",
+                "Confirm your account deletion request": "To confirm your account deletion request, please provide your credentials.",
+                "Account Deletion in Progress": "Account Deletion in Progress",
+                "Your account deletion request has been considered": "Your account deletion request has been considered. Your account has been deactivated for the next 30 days. If you change your mind during this period, you can reactivate your account by simply logging in and continuing as usual. If no action is taken within 30 days, your account and all associated data will be permanently deleted and will be irretrievable.",
+                "Thank you for using our service": "Thank you for using our service."
+            }
         }
     }
 }

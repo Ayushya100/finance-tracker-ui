@@ -6,10 +6,12 @@ import { UserFormComponent } from './components/user-form/user-form.component';
 
 // Modules
 import { SharedModule } from '../shared/shared.module';
+import { UserDetailsFormComponent } from './components/user-details-form/user-details-form.component';
 
 @NgModule({
   declarations: [
-    UserFormComponent
+    UserFormComponent,
+    UserDetailsFormComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,8 @@ import { SharedModule } from '../shared/shared.module';
   ],
   providers: [],
   exports: [
-    UserFormComponent
+    UserFormComponent,
+    UserDetailsFormComponent
   ]
 })
 export class CoreModule { }
