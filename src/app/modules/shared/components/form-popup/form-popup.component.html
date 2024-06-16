@@ -4,10 +4,10 @@
         <div class="flex align-middle gap-4">
             <div *ngFor="let action of actions">
                 <div *ngIf="action.type === 'submit'">
-                    <button class="popup-button h-10 w-[100px] text-[16px] rounded-sm" [disabled]="!form.valid" [ngClass]="{'disabled-button': !form.valid}" (click)="onSubmit()">{{ action.label }}</button>
+                    <button class="primary-btn h-10 w-[100px] text-[16px] rounded-sm" [disabled]="!form.valid" [ngClass]="{'disabled-button': !form.valid}" (click)="onSubmit()">{{ action.label }}</button>
                 </div>
                 <div *ngIf="action.type !== 'submit'">
-                    <button class="popup-button h-10 w-[100px] text-[16px] rounded-sm" (click)="close()">{{ action.label }}</button>
+                    <button class="secondary-btn h-10 w-[100px] text-[16px] rounded-sm" (click)="close()">{{ action.label }}</button>
                 </div>
             </div>
         </div>

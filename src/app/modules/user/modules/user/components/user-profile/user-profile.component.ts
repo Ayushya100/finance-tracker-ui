@@ -103,7 +103,6 @@ export class UserProfileComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.userFormTitle = await this.i18n.translate(`${this.userPrefix}Basic Info`);
     this.userPasswordTitle = await this.i18n.translate(`${this.userPrefix}Change Password`);
-    this.imageHeader = await this.i18n.translate(`${this.userPrefix}Upload delete profile image`);
     this.updateBtnHeader = await this.i18n.translate(`${this.userPrefix}update`);
     this.deleteAccHeader = await this.i18n.translate(`${this.userPrefix}Delete Account`);
     this.deleteAccInfo = await this.i18n.translate(`${this.messagePrefix}Delete Account details`);
@@ -125,6 +124,7 @@ export class UserProfileComponent implements OnInit {
       this.userAuthScopes = data.userPermissions;
       this.loadUserInfo(data);
       this.checkPermissions(this.userAuthScopes);
+      this.setImageHeaderActions();
     });
   }
 
@@ -153,6 +153,14 @@ export class UserProfileComponent implements OnInit {
     this.editPermission = permissions.editPermission;
     this.deletePermission = permissions.deletePermission;
     this.cdRef.detectChanges();
+  }
+
+  async setImageHeaderActions() {
+    this.userImgActions = this.userAuthScopes.editPermission ? this.userImgFields.actions : null;
+    this.userImgActions = this.userAuthScopes.deletePermission && this.isUserImgAvailable ? this.userImgActions : this.userImgFields.actions.filter((item: any) => item.type !== 'delete');
+    this.imageHeader = this.userAuthScopes.deletePermission && this.isUserImgAvailable ?
+      await this.i18n.translate(`${this.userPrefix}Upload delete profile image`) : 
+      await this.i18n.translate(`${this.userPrefix}Upload new profile image`);
   }
   
   loadUserInfo(userRecord: any) {
@@ -207,7 +215,7 @@ export class UserProfileComponent implements OnInit {
     }
   }
 
-  onFileSelected(event: Event) {
+  async onFileSelected(event: Event) {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files[0]) {
       const file = input.files[0];
@@ -220,6 +228,18 @@ export class UserProfileComponent implements OnInit {
       };
       reader.readAsDataURL(file);
     }
+
+    for (const action of this.userImgActions) {
+      if (action.type === 'submit') {
+        action.label = await this.i18n.translate(`${this.userPrefix}Change`);
+      }
+    }
+    this.onPreviewImage();
+  }
+
+  async onPreviewImage() {
+    this.userImgActions = this.userImgActions.filter((action: any) => action.type === 'submit');
+    this.imageHeader = await this.i18n.translate(`${this.userPrefix}Choose new profile image`)
   }
 
   updateImage() {
@@ -231,9 +251,16 @@ export class UserProfileComponent implements OnInit {
     }
   }
 
-  cancelImageUpload() {
+  async cancelImageUpload() {
     this.previewImg = this.userImg;
     this.fileName = '';
+
+    for (const action of this.userImgActions) {
+      if (action.type === 'submit') {
+        action.label = await this.i18n.translate(`${this.userPrefix}Upload`);
+      }
+    }
+    this.setImageHeaderActions();
   }
 
   openDeleteForm() {

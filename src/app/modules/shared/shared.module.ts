@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Components
 import { FormPopupComponent } from './components/form-popup/form-popup.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { MessagePopupComponent } from './components/message-popup/message-popup.component';
 
 // Services
 import { I18nService } from './services/i18n.service';
@@ -22,13 +23,14 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MessagePopupComponent } from './components/message-popup/message-popup.component';
+import { UnderDevelopmentComponent } from './components/under-development/under-development.component';
 
 @NgModule({
   declarations: [
     FormPopupComponent,
     LoaderComponent,
-    MessagePopupComponent
+    MessagePopupComponent,
+    UnderDevelopmentComponent
   ],
   imports: [
     CommonModule,
@@ -62,7 +64,8 @@ import { MessagePopupComponent } from './components/message-popup/message-popup.
     MatTooltipModule,
     MatSidenavModule,
     MatTabsModule,
-    LoaderComponent
+    LoaderComponent,
+    UnderDevelopmentComponent
   ]
 })
 export class SharedModule { }
