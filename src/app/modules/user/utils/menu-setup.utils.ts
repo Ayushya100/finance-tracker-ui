@@ -45,19 +45,44 @@ export class MenuSetupUtils {
                 children: null
             },
             {
+                type: 'link',
+                title: await this.i18n.translate(`${this.menuPrefix}Dashboard`),
+                open: false,
+                link: '/dashboard',
+                icon: 'analytics',
+                children: null
+            },
+            {
+                type: 'link',
+                title: await this.i18n.translate(`${this.menuPrefix}Reports`),
+                open: false,
+                link: '/report',
+                icon: 'assignment',
+                children: null
+            },
+            {
+                type: 'link',
+                title: await this.i18n.translate(`${this.menuPrefix}Payment Options`),
+                open: false,
+                link: '/card-account',
+                icon: 'account_balance_wallet',
+                children: null
+            },
+            {
+                type: 'link',
+                title: await this.i18n.translate(`${this.menuPrefix}Category and Tags`),
+                open: false,
+                link: '/card-account',
+                icon: 'loyalty',
+                children: null
+            },
+            {
                 type: 'parent',
                 title: await this.i18n.translate(`${this.menuPrefix}Expenditure`),
                 open: false,
                 link: null,
                 icon: 'payments',
                 children: [
-                    {
-                        type: 'link',
-                        title: await this.i18n.translate(`${this.menuPrefix}Add Tags`),
-                        open: false,
-                        link: '/expenditure/add-tags',
-                        icon: 'add'
-                    },
                     {
                         type: 'link',
                         title: await this.i18n.translate(`${this.menuPrefix}Register Expense`),
@@ -83,13 +108,6 @@ export class MenuSetupUtils {
                 children: [
                     {
                         type: 'link',
-                        title: await this.i18n.translate(`${this.menuPrefix}Add Tags`),
-                        open: false,
-                        link: '/funds/add-tags',
-                        icon: 'add'
-                    },
-                    {
-                        type: 'link',
                         title: await this.i18n.translate(`${this.menuPrefix}Add Funds`),
                         open: false,
                         link: '/funds/add-funds',
@@ -106,35 +124,12 @@ export class MenuSetupUtils {
                 children: [
                     {
                         type: 'link',
-                        title: await this.i18n.translate(`${this.menuPrefix}Add Tags`),
-                        open: false,
-                        link: '/investment/add-tags',
-                        icon: 'add'
-                    },
-                    {
-                        type: 'link',
                         title: await this.i18n.translate(`${this.menuPrefix}Register Investment`),
                         open: false,
                         link: '/investment/register-investment',
                         icon: 'timeline'
                     }
                 ]
-            },
-            {
-                type: 'link',
-                title: await this.i18n.translate(`${this.menuPrefix}Dashboard`),
-                open: false,
-                link: '/dashboard',
-                icon: 'analytics',
-                children: null
-            },
-            {
-                type: 'link',
-                title: await this.i18n.translate(`${this.menuPrefix}Reports`),
-                open: false,
-                link: '/report',
-                icon: 'assignment',
-                children: null
             }
         ];
     }

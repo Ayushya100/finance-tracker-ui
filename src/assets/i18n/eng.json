@@ -1,4 +1,7 @@
 {
+    "shared": {
+        "This page is currently under development": "This page is currently under development."
+    },
     "registerUserComponent": {
         "component": {
             "Register User": "Register User",
@@ -71,6 +74,8 @@
                 "Register Investment": "Register Investment",
                 "Dashboard": "Dashboard",
                 "Reports": "Reports",
+                "Payment Options": "Payment Options",
+                "Category and Tags": "Category and Tags",
                 "Logout": "Logout",
                 "How to use the portal": "How to use the portal?"
             }
@@ -79,6 +84,7 @@
             "component": {
                 "Upload delete profile image": "Upload / Delete profile image",
                 "Upload new profile image": "Upload new profile image",
+                "Choose new profile image": "Choose new profile image",
                 "Basic Info": "Basic Info",
                 "Change Password": "Change Password",
                 "Delete Account": "Delete Account",
@@ -87,7 +93,8 @@
                 "Update": "Update",
                 "Cancel": "Cancel",
                 "Delete": "Delete",
-                "Submit": "Submit"
+                "Submit": "Submit",
+                "Change": "Change"
             },
             "utils": {
                 "Bio": "Biography",

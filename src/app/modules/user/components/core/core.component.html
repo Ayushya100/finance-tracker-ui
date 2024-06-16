@@ -3,17 +3,17 @@
     <img [src]="backgroundImg" alt="" class="fixed top-0 left-0 right-0 bottom-0 h-full w-full">
     
     <!-- Top navbar -->
-    <div class="navbar shadow-lg p-4 flex justify-between items-center w-full relative">
+    <div class="navbar shadow-lg p-4 px-10 flex justify-between items-center w-full relative">
         <div class="header text-xl font-bold">Finance Tracker</div>
     </div>
 
     <!-- Main Content -->
     <div class="flex flex-1 overflow-hidden relative">
         <!-- Sidebar -->
-        <div [ngClass]="{'w-64': !isSidebarOpen, 'w-0': isSidebarOpen, 'overflow-hidden': isSidebarOpen}" class="sidebar shadow-lg transition-all duration-300 ease-in-out py-4 hidden md:flex flex-col justify-between overflow-auto">
+        <div [ngClass]="{'w-72': !isSidebarOpen, 'w-0': isSidebarOpen, 'overflow-hidden': isSidebarOpen}" class="sidebar shadow-lg transition-all duration-300 ease-in-out py-4 hidden md:flex flex-col justify-between overflow-auto">
             <ng-container *ngTemplateOutlet="sidenav"></ng-container>
         </div>
-        <div [ngClass]="{'translate-x-0': isSidebarOpen, '-translate-x-full': !isSidebarOpen, 'sidebar-bg': isSidebarOpen}" class="sidebar fixed top-0 left-0 w-64 h-full shadow-lg transform transition-transform duration-300 ease-in-out py-3 md:hidden z-50 flex flex-col justify-between">
+        <div [ngClass]="{'translate-x-0': isSidebarOpen, '-translate-x-full': !isSidebarOpen, 'sidebar-bg': isSidebarOpen}" class="sidebar fixed top-0 left-0 w-72 h-full shadow-lg transform transition-transform duration-300 ease-in-out py-3 md:hidden z-50 flex flex-col justify-between">
             <ng-container *ngTemplateOutlet="sidenav"></ng-container>
         </div>
 
@@ -37,7 +37,7 @@
                         <mat-icon *ngIf="!isSidebarOpen" fontIcon="chevron_right"></mat-icon>
                     </button>
                 </div>
-                <div class="text-[16px] font-semibold pl-4 card-header">{{ selectedRouterHeading }}</div>
+                <div class="text-[16px] font-semibold pl-4">{{ selectedRouterHeading }}</div>
             </div>
 
             <!-- Main Content -->
@@ -51,44 +51,41 @@
 <ng-template #sidenav>
     <div class="section-1 pt-2">
         <div class="flex justify-center">
-            <img [src]="userImg" alt="" class="w-[100px] h-[90px] profile-img">
-        </div>
-        <div class="mt-4 flex justify-center">
-            <div class="w-50">
-                <div class="font-medium text-[14px]">{{ name }}</div>
-                <div class="font-medium text-[14px]">{{ userName }}</div>
+            <img [src]="userImg" alt="User Image" class="w-[90px] h-[80px] profile-img">
+            <div class="ml-5 flex flex-col justify-center">
+                <div class="max-w-20 overflow-hidden text-ellipsis text-nowrap" [matTooltip]="name" matTooltipPosition="after">{{ name }}</div>
+                <div class="max-w-20 overflow-hidden text-ellipsis text-nowrap mt-1" [matTooltip]="userName" matTooltipPosition="after">{{ userName }}</div>
             </div>
         </div>
         <div class="mt-4">
             <div class="flex justify-center space-x-4">
                 <div *ngFor="let section of headerSection">
-                    <button [ngClass]="{'active-button': isActive(section), 'icon-color': !isActive(section)}" (click)="navigateTo(section)" class="h-10 w-10 rounded-sm button shadow items-center" [matTooltip]="section.title" matTooltipPosition="after">
-                        <mat-icon class="mt-1.5" [fontIcon]="section.icon"></mat-icon>
+                    <button [ngClass]="{'primary-btn': isActive(section), 'secondary-btn': !isActive(section)}" (click)="navigateTo(section)" [matTooltip]="section.title" class="h-10 w-10 rounded-sm shadow items-center" matTooltipPosition="after">
+                        <mat-icon [ngClass]="{'primary-btn-icon': isActive(section)}" class="mt-1.5" [fontIcon]="section.icon"></mat-icon>
                     </button>
                 </div>
             </div>
         </div>
+        
         <div class="mt-4">
             <div class="p-4">
                 <div *ngFor="let section of sections" class="mb-2">
-                    <button *ngIf="section.type === 'parent'" (click)="toggleSection(section)" class="sidebar sidebar-link text-left font-medium p-2 w-full rounded-sm flex items-center">
+                    <a *ngIf="section.type === 'link'" (click)="navigateTo(section)" [ngClass]="{'primary-btn': isActive(section)}" class="font-medium p-2 pl-3 rounded-sm items-center flex cursor-pointer sidebar-btn w-full">
                         <mat-icon [fontIcon]="section.icon"></mat-icon>
-                        <div class="mt-0.5 ml-4 text-[15px]">
-                            {{ section.title }}
-                        </div>
-                    </button>
-                    <a *ngIf="section.type === 'link'" (click)="navigateTo(section)" [ngClass]="{'header': isActive(section), 'sidebar-link': !isActive(section)}" class="font-medium p-2 rounded-sm flex items-center cursor-pointer">
-                        <mat-icon [fontIcon]="section.icon"></mat-icon>
-                        <div class="mt-0.5 ml-4 text-[15px]">
+                        <div class="ml-4 text-[14px]">
                             {{ section.title }}
                         </div>
                     </a>
-                    <div *ngIf="section.open && section.children" class="pl-4 transition-max-height duration-300 ease-in-out max-h-96 overflow-hidden">
+
+                    <div *ngIf="section.type === 'parent'" class="sidebar-header text-left font-medium p-2 pl-3 w-full rounded-sm">
+                        <div class="text-[16px]">
+                            {{ section.title }}
+                        </div>
                         <ul>
                             <li *ngFor="let subSection of section.children">
-                                <a (click)="navigateTo(subSection)" [ngClass]="{'header': isActive(subSection), 'sidebar-link': !isActive(subSection)}" class="p-2 rounded-sm flex items-center cursor-pointer">
+                                <a (click)="navigateTo(subSection)" [ngClass]="{'primary-btn': isActive(section)}" class="font-medium p-2 pl-3 mt-2 rounded-sm flex items-center cursor-pointer sidebar-btn w-full">
                                     <mat-icon [fontIcon]="subSection.icon"></mat-icon>
-                                    <div class="mt-0.5 ml-4 text-[15px]">
+                                    <div class="mt-0.5 ml-4 text-[14px]">
                                         {{ subSection.title }}
                                     </div>
                                 </a>
@@ -99,9 +96,10 @@
             </div>
         </div>
     </div>
+
     <div class="section-2">
         <div class="p-4">
-            <a class="p-2 rounded-sm flex items-center">
+            <a class="p-2 sidebar-link rounded-sm flex items-center cursor-pointer">
                 <mat-icon fontIcon="help"></mat-icon>
                 <div class="ml-2 font-medium text-[15px]">
                     {{ queryHeading }}

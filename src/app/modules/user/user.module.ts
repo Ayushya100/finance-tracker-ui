@@ -9,8 +9,12 @@ import { AuthInterceptorService } from './services/authInterceptor.service';
 
 // Component
 import { CoreComponent } from './components/core/core.component';
+
+// Modules
 import { SharedModule } from '../shared/shared.module';
 import { UserProfileModule } from './modules/user/userProfile.module';
+import { IndexModule } from './modules/index/index.module';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,9 @@ import { UserProfileModule } from './modules/user/userProfile.module';
     CommonModule,
     RouterModule,
     SharedModule,
-    UserProfileModule
+    UserProfileModule,
+    IndexModule,
+    DashboardModule
   ],
   providers: [
     AuthService,

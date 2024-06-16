@@ -90,7 +90,12 @@ export class UserDetailsFormUtils {
                 {
                     label: await this.i18n.translate(`${this.utilsPrefix}Gender`),
                     field: 'gender',
-                    type: 'text',
+                    type: 'dropdown',
+                    options: [
+                        { value: 'M', viewValue: 'Male' },
+                        { value: 'F', viewValue: 'Female' },
+                        { value: 'O', viewValue: 'Others' }
+                    ],
                     required: false,
                     readonly: true,
                     span: 1,
