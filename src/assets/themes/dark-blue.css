@@ -1,148 +1,3 @@
-.bg-color {
-    background-color: #006A6A;
-}
-
-.primary-btn-color {
-    background-color: #006A6A;
-    color: #E9F7F7;
-    font-weight: 500;
-    transition: 0.2s ease-in-out;
-}
-.primary-btn-color:hover {
-    background-color: #E9F7F7;
-    border-color: #006A6A;
-    border-width: 1px;
-    color: #006A6A;
-    transition: 0.2s ease-in-out;
-}
-.primary-btn-color[disabled]:hover {
-    background-color: #006A6A;
-    color: #E9F7F7;
-    font-weight: 500;
-}
-
-.secondary-btn-color {
-    background-color: #F8F8F8;
-    color: #161616;
-    font-weight: 500;
-}
-
-.text-h-1 {
-    color: #FFFFFF;
-}
-.text-h-2 {
-    color: #E1E1E1;
-}
-.text-n {
-    color: #797979;
-}
-
-.card-color {
-    background-color: #161616;
-}
-/* .icon-color {
-    color: #8D8D8D;
-} */
-
-.form-controller {
-    background-color: #000000;
-    color: #f5f5f5;
-    padding: 0 10px;
-}
-
-.mat-mdc-snack-bar-container {
-    &.success-notification {
-        --mdc-snackbar-container-color: #161616;
-        --mat-mdc-snack-bar-button-color: #22bb33;
-        --mdc-snackbar-supporting-text-color: #22bb33;
-    }
-}
-.mat-mdc-snack-bar-container {
-    &.error-notification {
-        --mdc-snackbar-container-color: #161616;
-        --mat-mdc-snack-bar-button-color: #ff3333;
-        --mdc-snackbar-supporting-text-color: #ff3333;
-    }
-}
-
-.main-background {
-    color: #C0BFC4;
-    font-family: Arial, sans-serif;
-}
-
-
-
-/* .sidebar-header {
-    color: #dddddd;
-} */
-.active-sidebar-link {
-    color: #1DC1A8;
-    border-right: 2px solid #1DC1A8;
-}
-/* .sidebar-link {
-    color: #cccccc;
-}
-.sidebar-link:hover {
-    color: #f5f5f5;
-    transition: 0.2s ease-in-out;
-} */
-
-.button {
-    background-color: #1d1d1d;
-    border-color: #1f1f1f;
-    box-shadow: 0 8px 32px 0 rgba(31, 31, 31, 0.36);
-    color: #cccccc;
-    transition: 0.2s;
-}
-.button:hover {
-    background-color: #272727;
-    border-color: #1f1f1f;
-    transition: 0.2s ease-in-out;
-}
-
-.disabled-button:hover {
-    background-color: #272727;
-    border-color: #151515;
-    color: #A0A0A0;
-}
-.active-button {
-    color: #058169;
-    border: 1px solid #058169;
-}
-
-.icon-color {
-    color: #A0A0A0;
-}
-.icon-color:hover {
-    color: #8d8d8d;
-}
-.active-icon-color {
-    color: #1DC1A8;
-}
-
-.popup-container {
-    background-color: #1b1b1b;
-    color: whitesmoke;
-}
-::ng-deep .popup-container {
-    background-color: transparent !important;
-}
-.popup-button {
-    background-color: #0a0a0a80;
-    border-color: #0a0a0a;
-    box-shadow: 0 8px 32px 0 #0a0a0a80;
-    color: #cccccc;
-    transition: 0.2s;
-}
-.popup-button:hover {
-    background-color: #0e0e0e;
-    border-color: #0f0f0f;
-    transition: 0.2s ease-in-out;
-}
-
-
-
-
 /* TODO - Final */
 .header {
     color: whitesmoke;
@@ -175,7 +30,7 @@
 .sidebar-bg {
     backdrop-filter: blur(21px);
     -webkit-backdrop-filter: blur(21px);
-    border-right: 1px solid rgb(255, 155, 155, 0.16);
+    border-right: 1px solid rgb(255, 155, 155, 0.45);
 }
 
 .sidebar-btn {
@@ -208,26 +63,26 @@
 /* Buttons */
 .primary-btn {
     --clr-font-main: hsla(0 0% 20% / 100);
-    --btn-bg-1: hsla(169 83% 12% / 1);
-    --btn-bg-2: hsla(170 83% 14% / 1);
+    --btn-bg-1: hsla(205 88% 16% / 1);
+    --btn-bg-2: hsla(216 100% 15% / 1);
     position: relative;
     transition: 0.8s ease;
     background-size: 280% auto;
     border: 1px solid var(--btn-bg-1);
     color: whitesmoke;
-    background: #05372E;
-    box-shadow: inset -5px -5px 10px #042f27, inset 5px 5px 10px #063f35;
+    background: #001F4D;
+    box-shadow: inset -5px -5px 10px #001a41, inset 5px 5px 10px #002459;
     transition: 0.5s ease-in-out;
 }
 .primary-btn:hover {
-    background: linear-gradient(315deg, #053b31, #053229);
-    box-shadow:  -1px -1px 2px #042f27, 1px 1px 2px #063f35;
+    background: linear-gradient(315deg, #05314E, #001F4D);
+    box-shadow:  -1px -1px 2px #001F4B, 1px 1px 2px #04243B;
     transition: 0.8s ease-in-out;
 }
 
 .secondary-btn {
-    --color: #058169;
-    --hover-color: #05372E;
+    --color: #00528A;
+    --hover-color: #001F4D;
     font-family: inherit;
     display: inline-block;
     overflow: hidden;
@@ -239,9 +94,9 @@
     transition: 0.5s ease-in-out;
 }
 .secondary-btn:hover {
-    background: linear-gradient(315deg, #053229, #053b31);
-    box-shadow:  -1px -1px 5px #042f27, 1px 1px 2px #063f35;
-    border: 1px solid #063f35;
+    background: linear-gradient(315deg, #05314E, #001F4D);
+    box-shadow:  -1px -1px 5px #001F4B, 1px 1px 2px #04243B;
+    border: 1px solid #04243B;
     transition: 0.8s ease-in-out;
     color: whitesmoke;
 }
@@ -390,7 +245,7 @@
     box-shadow: 0 0 10px 3px rgb(0, 0, 0, 0.25);
 }
 .checkbox:checked ~ .slider {
-    background-color: #05372E;
+    background-color: #001F4D;
 }
 .checkbox:active ~ .slider::before {
     transform: translate(0);

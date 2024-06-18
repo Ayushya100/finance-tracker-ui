@@ -1,54 +1,10 @@
-.main-background {
-    background-color: #1A1A1A;
-    color: #E0E0E0;
-    font-family: Arial, sans-serif;
-}
-
-.header {
-    color: #bb0000;
-}
-
-.sidebar {
-    background-color: #1A1A1A;
-    color: #E0E0E0;
-}
-
-/* .sidebar .active {
-    background-color: #333333;
-    color: #FF4C4C;
-} */
-
-.navbar {
-    background-color: #1A1A1A;
-    color: #E0E0E0;
-}
-
-.navbar a {
-    color: #E0E0E0;
-}
-
-/* .navbar a:hover, .navbar a.active {
-    background-color: #333333;
-    color: #FF4C4C;
-} */
-
-.main-content {
-    background-color: #1A1A1A;
-    color: #E0E0E0;
-}
-
-.card {
-    background-color: #333333;
-    color: #E0E0E0;
-    border: 1px solid #444444;
-}
-
-
-
-
 /* TODO - Final */
 .header {
     color: whitesmoke;
+}
+
+.line {
+    border-color: #3a3a3a;
 }
 
 .navbar {
@@ -75,4 +31,240 @@
     backdrop-filter: blur(21px);
     -webkit-backdrop-filter: blur(21px);
     border-right: 1px solid rgb(255, 155, 155, 0.45);
+}
+
+.sidebar-btn {
+    color: #bbbbbb;
+    transition: 0.4s ease;
+}
+.sidebar-btn:hover {
+    background-color: #131313;
+    border-color: #1f1f1f;
+    box-shadow: 0 8px 32px 0 rgba(31, 31, 31, 0.36);
+    color: whitesmoke;
+    transition: 0.4s ease-in-out;
+}
+.sidebar-divider {
+    border-color: whitesmoke;
+}
+.sidebar-header {
+    background-color: rgba(0, 0, 0, 0);
+    color: whitesmoke;
+}
+.sidebar-link {
+    color: #bbbbbb;
+    transition: 0.4s ease;
+}
+.sidebar-link:hover {
+    color: whitesmoke;
+    transition: 0.4s ease-in-out;
+}
+
+/* Buttons */
+.primary-btn {
+    --clr-font-main: hsla(0 0% 20% / 100);
+    --btn-bg-1: hsla(0 88% 24% / 1);
+    --btn-bg-2: hsla(0 78% 18% / 1);
+    position: relative;
+    transition: 0.8s ease;
+    background-size: 280% auto;
+    border: 1px solid var(--btn-bg-1);
+    color: whitesmoke;
+    background: #710707;
+    box-shadow: inset -5px -5px 10px #600606, inset 5px 5px 10px #820808;
+    transition: 0.5s ease-in-out;
+}
+.primary-btn:hover {
+    background: linear-gradient(315deg, #9b0202, #520a0a);
+    box-shadow:  -1px -1px 2px #600606, 1px 1px 2px #820808;
+    transition: 0.8s ease-in-out;
+}
+
+.secondary-btn {
+    --color: #cc0000;
+    --hover-color: #520a0a;
+    font-family: inherit;
+    display: inline-block;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 1;
+    color: var(--color);
+    border: 1px solid var(--color);
+    position: relative;
+    transition: 0.5s ease-in-out;
+}
+.secondary-btn:hover {
+    background: linear-gradient(315deg, #9b0202, #520a0a);
+    box-shadow:  -1px -1px 5px #600606, 1px 1px 2px #820808;
+    border: 1px solid #820808;
+    transition: 0.8s ease-in-out;
+    color: whitesmoke;
+}
+.secondary-btn::before {
+    position: absolute;
+    content: "";
+    background: var(--hover-color);
+    height: 150px;
+    width: 200px;
+    z-index: -1;
+    border-radius: 50%;
+    background-image: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0) 30%,
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0) 70%
+    );
+    animation: shine 3s infinite linear;
+}
+.secondary-btn:before {
+    top: 100%;
+    left: 100%;
+    transition: 0.3s all;
+}
+.secondary-btn:hover::before {
+    top: -30px;
+    left: -30px;
+}
+
+.disabled-btn {
+    border: 1px solid #aaaaaa;
+    color: #aaaaaa;
+    transition: 0.3s ease;
+}
+
+.delete-button {
+    border-color: #5B0A09;
+    color: #cccccc;
+    transition: 0.5s ease-in-out;
+    background: #720808;
+    box-shadow: inset -5px -5px 10px #610707, inset 5px 5px 10px #830909;
+}
+.delete-button:hover {
+    background: linear-gradient(315deg, #7a0909, #670707);
+    box-shadow:  -1px -1px 2px #610707, 1px 1px 2px #830909;
+}
+.delete-btn-outline {
+    --color: red;
+    --hover-color: #720808;
+    font-family: inherit;
+    display: inline-block;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 1;
+    color: var(--color);
+    border: 1px solid var(--color);
+    position: relative;
+    transition: 0.5s ease-in-out;
+}
+.delete-btn-outline:hover {
+    background: linear-gradient(315deg, #670707, #7a0909);
+    box-shadow:  -1px -1px 5px #610707, 1px 1px 5px #830909;
+    border: 1px solid #5B0A09;
+    transition: 0.8s ease-in-out;
+    color: whitesmoke;
+}
+.delete-btn-outline::before {
+    position: absolute;
+    content: "";
+    background: var(--hover-color);
+    height: 150px;
+    width: 200px;
+    z-index: -1;
+    border-radius: 50%;
+    background-image: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0) 30%,
+        rgba(255, 255, 255, 0.2),
+        rgba(255, 255, 255, 0) 70%
+    );
+    animation: shine 3s infinite linear;
+}
+.delete-btn-outline:before {
+    top: 100%;
+    left: 100%;
+    transition: 0.3s all;
+}
+.delete-btn-outline:hover::before {
+    top: -30px;
+    left: -30px;
+}
+
+.primary-btn-icon {
+    color: whitesmoke;
+}
+
+/* Card */
+.card {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.05),
+        rgba(255, 255, 255, 0.05)
+    );
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    border: 1px solid rgb(255, 155, 155, 0.1);
+    border-radius: 5px;
+}
+.card-header {
+    color: whitesmoke;
+}
+
+.form-field {
+    background-color: rgba(10, 10, 10, 0.5);
+    color: #cccccc;
+}
+
+/* Toggle Button */
+.toggle-btn .slider {
+    width: 50px;
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    border: 3px solid transparent;
+    transition: .3s;
+    cursor: pointer;
+    background-color: lightgray;
+    box-shadow: 0 0 10px 0 rgb(0, 0, 0, 0.25) inset;
+}
+.toggle-btn .slider::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    transform: translateX(-30px);
+    border-radius: 10px;
+    transition: .3s;
+    box-shadow: 0 0 10px 3px rgb(0, 0, 0, 0.25);
+    background-color: whitesmoke;
+}
+.checkbox:checked ~ .slider::before {
+    transform: translateX(30px);
+    box-shadow: 0 0 10px 3px rgb(0, 0, 0, 0.25);
+}
+.checkbox:checked ~ .slider {
+    background-color: #520a0a;
+}
+.checkbox:active ~ .slider::before {
+    transform: translate(0);
+}
+
+/* Texts */
+.text-heading-2 {
+    color: #bbbbbb;
+}
+
+/* Media query */
+@media (prefers-reduced-motion: reduce) {
+    .btn-donate {
+        transition: linear;
+    }
+}
+
+@keyframes shine {
+    0% {left: -100px}
+    20% {left: 100%}
+    100% {left: 100%}
 }

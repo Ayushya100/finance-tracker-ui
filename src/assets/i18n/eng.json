@@ -151,12 +151,15 @@
                 "Monthly": "Monthly",
                 "Yearly": "Yearly",
                 "Custom": "Custom",
+                "Configure your Expense Reports": "Configure your Expense Reports",
+                "Configure your Investment Reports": "Configure your Investment Reports",
+                "Configure your Income Reports": "Configure your Income Reports",
                 "Daily Monthly Yearly Custom": "Daily / Monthly / Yearly / Custom"
             },
             "message": {
                 "Bar Chart": "Bar charts show data as bars of varying lengths, where the length represents the value being measured. Each bar typically represents a category, making it easy to compare values across different groups.",
                 "Pie Chart": "Pie charts show proportions or percentages of a whole, where each slice represents a category's share relative to the total. They are easy to understand at a glance due to their circular shape and clear divisions.",
-                "Line Chart": "ine charts depict data trends over a continuous time span, showing changes and patterns. It connects data points with lines, making it easy to see trends, fluctuations, and relationships."
+                "Line Chart": "Line charts depict data trends over a continuous time span, showing changes and patterns. It connects data points with lines, making it easy to see trends, fluctuations, and relationships."
             }
         }
     }
