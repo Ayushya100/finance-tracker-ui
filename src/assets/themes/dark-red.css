@@ -43,37 +43,36 @@
     border: 1px solid #444444;
 }
 
-/* .card-heading {
-    color: #FF4C4C;
-    font-size: 1.5em;
+
+
+
+/* TODO - Final */
+.header {
+    color: whitesmoke;
 }
 
-.card-text {
-    color: #E0E0E0;
-    font-size: 1em;
+.navbar {
+    background-color: rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(21px);
+    -webkit-backdrop-filter: blur(21px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+    color: #79787D;
+}
+.secondary-navbar {
+    background-color: rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+    color: #cccccc;
 }
 
-h1 {
-    color: #FF4C4C;
-    font-size: 2em;
+.sidebar {
+    background-color: rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(21px);
+    -webkit-backdrop-filter: blur(21px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+    color: #cccccc;
 }
-
-a {
-    color: #FF4C4C;
+.sidebar-bg {
+    backdrop-filter: blur(21px);
+    -webkit-backdrop-filter: blur(21px);
+    border-right: 1px solid rgb(255, 155, 155, 0.45);
 }
-
-a:hover {
-    color: #FF6F61;
-}
-
-button {
-    background-color: #FF4C4C;
-    color: #FFFFFF;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #FF6F61;
-} */

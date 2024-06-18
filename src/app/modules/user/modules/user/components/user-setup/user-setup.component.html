@@ -1,1 +1,66 @@
-<app-under-development></app-under-development>
+<div *ngIf="viewPermission; else notAccessible">
+    <div class="w-full h-full space-y-4">
+        <div class="card p-5">
+            <div class="flex justify-between items-center">
+                <div class="text-[18px] card-header font-bold">{{ generalHeader }}</div>
+                <div *ngIf="editPermission">
+                    <div class="flex align-middle gap-4">
+                        <div *ngFor="let action of setupActions">
+                            <div *ngIf="action.type === 'submit'; else otherBtn">
+                                <button class="w-[100px] primary-btn h-10 text-[16px] rounded-sm" (click)="onGeneralSetupSubmit()">{{ action.label }}</button>
+                            </div>
+                            <ng-template #otherBtn>
+                                <button class="w-[100px] secondary-btn h-10 text-[16px] rounded-sm" (click)="onGeneralCancelSubmit()">{{ action.label }}</button>
+                            </ng-template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-b-2 my-3 line"></div>
+    
+            <form [formGroup]="generalForm">
+                <div formArrayName="settings">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div *ngFor="let setting of options.controls; let setupIndex = index" [formGroupName]="setupIndex">
+                            <p class="text-heading-2 flex items-center">
+                                {{ setting.value.categoryDescription }}
+                            </p>
+                            <div>
+                                <select class="form-field min-h-10 w-11/12 px-4 rounded-sm" name="dropdown" formControlName="value">
+                                    <option class="form-field" *ngFor="let option of setting.value.options" [value]="option.value">{{ option.viewValue }}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="card p-5">
+            <app-user-setup-form
+                [header]="dashboardHeader"
+                [actions]="setupActions"
+                [editPermission]="editPermission"
+                [form]="dashboardForm"
+                [formData]="dashboardSetup"
+                [formInitialData]="initialDashboardValues"
+                (formSubmitData)="onSubmit($event)">
+            </app-user-setup-form>
+        </div>
+    
+        <div class="card p-5">
+            <app-user-setup-form
+                [header]="reportHeader"
+                [actions]="setupActions"
+                [editPermission]="editPermission"
+                [form]="reportForm"
+                [formData]="reportSetup"
+                [formInitialData]="initialReportValues"
+                (formSubmitData)="onSubmit($event)">
+            </app-user-setup-form>
+        </div>
+    </div>
+</div>
+<ng-template #notAccessible>
+    <app-no-access></app-no-access>
+</ng-template>

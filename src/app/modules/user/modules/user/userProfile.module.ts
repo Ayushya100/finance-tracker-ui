@@ -9,11 +9,13 @@ import { UserSetupComponent } from './components/user-setup/user-setup.component
 import { UserService } from './services/user.service';
 import { CoreModule } from 'src/app/modules/core/core.module';
 import { SharedModule } from 'src/app/modules/shared/shared.module';
+import { UserSetupFormComponent } from './components/user-setup-form/user-setup-form.component';
 
 @NgModule({
   declarations: [
     UserProfileComponent,
-    UserSetupComponent
+    UserSetupComponent,
+    UserSetupFormComponent
   ],
   imports: [
     CommonModule,

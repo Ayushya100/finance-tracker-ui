@@ -13,6 +13,8 @@ export class ThemeService {
 
   private userLang$ = new BehaviorSubject<string | null>(null);
   private userTheme$ = new BehaviorSubject<string | null>(null);
+  private backgroundImgSubject = new BehaviorSubject<string | null>(null);
+  backgroundImg$ = this.backgroundImgSubject.asObservable();
 
   constructor(
     private rendererFactory: RendererFactory2,
@@ -24,9 +26,11 @@ export class ThemeService {
   loadSystemSetup(userSetup: any) {
     const userLang = userSetup?.filter((val: any) => val.categoryName === 'user-language').map((val: any) => val.value)[0];
     const userTheme = userSetup?.filter((val: any) => val.categoryName === 'user-theme').map((val: any) => val.value)[0];
-    
+    const backgroundImg = userTheme ? `assets/img/${userTheme}-bg.jpg` : 'assets/img/light-blue-bg.jpg';
+
     this.userLang$.next(userLang);
     this.userTheme$.next(userTheme);
+    this.backgroundImgSubject.next(backgroundImg);
     
     this.loadTheme(userTheme);
   }

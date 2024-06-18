@@ -10,6 +10,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormPopupComponent } from './components/form-popup/form-popup.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { MessagePopupComponent } from './components/message-popup/message-popup.component';
+import { UnderDevelopmentComponent } from './components/under-development/under-development.component';
+import { NoAccessComponent } from './components/no-access/no-access.component';
 
 // Services
 import { I18nService } from './services/i18n.service';
@@ -23,14 +25,14 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDialogModule } from '@angular/material/dialog';
-import { UnderDevelopmentComponent } from './components/under-development/under-development.component';
 
 @NgModule({
   declarations: [
     FormPopupComponent,
     LoaderComponent,
     MessagePopupComponent,
-    UnderDevelopmentComponent
+    UnderDevelopmentComponent,
+    NoAccessComponent
   ],
   imports: [
     CommonModule,
@@ -65,7 +67,8 @@ import { UnderDevelopmentComponent } from './components/under-development/under-
     MatSidenavModule,
     MatTabsModule,
     LoaderComponent,
-    UnderDevelopmentComponent
+    UnderDevelopmentComponent,
+    NoAccessComponent
   ]
 })
 export class SharedModule { }

@@ -7,6 +7,7 @@ import { AuthService } from '../../services/auth.service';
 import { LoaderService } from 'src/app/modules/shared/services/loader.service';
 import { UserService } from '../../services/user.service';
 import { NotificationService } from 'src/app/modules/shared/services/notification.service';
+import { ThemeService } from 'src/app/modules/shared/services/theme.service';
 
 // Utils
 import { MenuSetupUtils } from '../../utils';
@@ -27,7 +28,7 @@ export class CoreComponent implements OnInit {
 
   selectedRouterHeading: string = '';
   queryHeading: string = '';
-  backgroundImg: string = 'assets/img/light-blue-bg.jpg';
+  backgroundImg: string | null = 'assets/img/light-blue-bg.jpg';
 
   userInfo: any;
   userImg: any;
@@ -47,10 +48,14 @@ export class CoreComponent implements OnInit {
     private loaderService: LoaderService,
     private userService: UserService,
     private notificationService: NotificationService,
+    private themeService: ThemeService,
     private store: UserStore
   ) {
     this.loaderService.loading$.subscribe(isLoading => {
       this.isLoading = isLoading;
+    });
+    this.themeService.backgroundImg$.subscribe(img => {
+      this.backgroundImg = img;
     });
   }
 
@@ -61,13 +66,13 @@ export class CoreComponent implements OnInit {
 
     this.userId = this.authService.getUserId();
     this.store.loadUserInfo(this.userId);
+    this.store.loadUserSetup(this.userId);
 
     this.store.getStateSubject().subscribe((data) => {
       this.userInfo = data;
       this.userSetup = data.userSetup;
-      this.userTheme = this.userSetup?.filter((item: any) => item.categoryName === 'user-theme').map((item: any) => item.value)[0];
-      this.backgroundImg = this.userTheme ? `assets/img/${this.userTheme}-bg.jpg` : this.backgroundImg;
-
+      this.themeService.loadSystemSetup(this.userSetup);
+      
       this.name = `${data.firstName} ${data.lastName}`;
       this.userName = `@${data.userName}`;
       this.userImg = data.profileImageURL ? data.profileImageURL : 'assets/img/dummy-user.png';
