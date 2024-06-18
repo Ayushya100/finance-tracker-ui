@@ -258,6 +258,7 @@ export class UserStore {
 
                     if (themeChange) {
                         this.themeService.loadSystemSetup(payload);
+                        this.i18n.refreshUserSetup(payload);
                     }
                 },
                 error: (err: any) => {

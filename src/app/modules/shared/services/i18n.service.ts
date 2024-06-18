@@ -43,8 +43,10 @@ export class I18nService {
   }
 
   fetchSystemSetup(systemSetup: any) {
+    console.log(systemSetup);
     this.userSetupSubject.next(systemSetup);
     const userLang = systemSetup?.filter((val: any) => val.categoryName === 'user-language').map((val: any) => val.value)[0];
+    console.log(userLang);
     this.httpClient.get<any>(`${this.translationURI}/${userLang}.json`).subscribe({
       next: (translations) => {
         this.translationCache.next(translations);

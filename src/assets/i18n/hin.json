@@ -1,0 +1,166 @@
+{
+    "shared": {
+        "This page is currently under development": "यह पेज अभी विकासाधीन है.",
+        "You don't have access to view this page": "आपके पास इस पृष्ठ को देखने की सुविधा नहीं है, कृपया सहायता के लिए हमारी टीम से संपर्क करें!"
+    },
+    "registerUserComponent": {
+        "component": {
+            "Register User": "उपयोगकर्ता पंजीकृत करें",
+            "Ready to Get Started? Join us Today!": "आरंभ करने के लिए तैयार हैं? आज ही शामिल हों!",
+            "Required Fields": "आवश्यक फील्ड्स",
+            "Register": "पंजीकरण"
+        },
+        "utils": {
+            "fields": {
+                "First Name": "पहला नाम",
+                "Provide your First Name": "अपना पहला नाम प्रदान करें",
+                "Last Name": "उपनाम",
+                "Provide your Last Name": "अपना अंतिम नाम प्रदान करें",
+                "Email Id": "ईमेल आईडी",
+                "Register your Email Id": "अपना ईमेल आईडी रजिस्टर करें",
+                "User Name": "उपयोगकर्ता नाम",
+                "Select your Username": "अपना उपयोगकर्ता नाम चुनें",
+                "Password": "पासवर्ड",
+                "Enter your Password": "अपना कूटशब्द भरें"
+            },
+            "validation": {
+                "First Name is required": "पहला नाम आवश्यक है",
+                "Email Id is required": "ईमेल आईडी आवश्यक है",
+                "Username is required": "उपयोगकर्ता नाम आवश्यक है",
+                "Password is required": "पासवर्ड की आवश्यकता है"
+            }
+        }
+    },
+    "verifyUserComponent": {
+        "component": {
+            "Verify your mail": "अपना ईमेल सत्यापित करने के लिए धन्यवाद!",
+            "Please click the button below": "सत्यापन प्रक्रिया पूरी करने और अपना खाता सुरक्षित करने के लिए, कृपया नीचे दिए गए बटन पर क्लिक करें।",
+            "Support team": "यदि आपने इस सत्यापन का अनुरोध नहीं किया है या मानते हैं कि यह ईमेल गलती से भेजा गया था, तो कृपया इस संदेश को अनदेखा करें या सहायता के लिए हमारी सहायता टीम से संपर्क करें।",
+            "Helping us": "आपके खाते को सुरक्षित रखने में हमारी मदद करने के लिए धन्यवाद!",
+            "Verify your account": "अपने खाते को सत्यापित करें"
+        }
+    },
+    "loginUserComponent": {
+        "component": {
+            "LogIn": "लॉग इन करें",
+            "Welcome Back": "पुनः स्वागत है, आपको देखकर हमेशा खुशी होती है!",
+            "Required Fields": "आवश्यक फील्ड्स"
+        },
+        "utils": {
+            "fields": {
+                "Username / Email Id": "उपयोगकर्ता नाम / ईमेल आईडी",
+                "Provide your username or emailId": "अपना उपयोगकर्ता नाम या ईमेल आईडी प्रदान करें",
+                "Password": "पासवर्ड",
+                "Enter your Password": "अपना कूटशब्द भरें"
+            },
+            "validation": {
+                "Username / Email Id is required": "उपयोगकर्ता नाम / ईमेल आईडी आवश्यक है",
+                "Password is required": "पासवर्ड की आवश्यकता है"
+            }
+        }
+    },
+    "userSection": {
+        "userMenu": {
+            "utils": {
+                "User Profile": "उपयोगकर्ता रूपरेखा",
+                "User Setup": "उपयोगकर्ता सेटअप",
+                "Home": "घर",
+                "Expenditure": "व्यय",
+                "Funds": "फंड",
+                "Investment": "निवेश",
+                "Add Tags": "टैगों को जोड़ें",
+                "Register Expense": "व्यय रजिस्टर करें",
+                "Register Credit Expense": "क्रेडिट व्यय पंजीकृत करें",
+                "Add Funds": "धन जोड़ें",
+                "Register Investment": "निवेश पंजीकृत करें",
+                "Dashboard": "डैशबोर्ड",
+                "Reports": "रिपोर्टों",
+                "Payment Options": "भुगतान विकल्प",
+                "Category and Tags": "श्रेणी और टैग",
+                "Logout": "लॉग आउट",
+                "How to use the portal": "पोर्टल का उपयोग कैसे करें?"
+            }
+        },
+        "userProfile": {
+            "component": {
+                "Upload delete profile image": "प्रोफ़ाइल छवि अपलोड/हटाएं",
+                "Upload new profile image": "नई प्रोफ़ाइल छवि अपलोड करें",
+                "Choose new profile image": "नई प्रोफ़ाइल छवि चुनें",
+                "Basic Info": "बुनियादी जानकारी",
+                "Change Password": "पासवर्ड बदलें",
+                "Delete Account": "खाता हटा दो",
+                "Confirm Deletion": "मिटाने की पुष्टि",
+                "Upload": "डालना",
+                "Update": "अद्यतन",
+                "Cancel": "रद्द करना",
+                "Delete": "मिटाना",
+                "Submit": "जमा करना",
+                "Change": "परिवर्तन"
+            },
+            "utils": {
+                "Bio": "जीवनी",
+                "Write some details about you": "अपने बारे में कुछ विवरण लिखें",
+                "First Name": "पहला नाम",
+                "Enter First Name": "प्रथम नाम दर्ज करें",
+                "Last Name": "उपनाम",
+                "Enter Last Name": "अंतिम नाम दर्ज करो",
+                "Username": "Username",
+                "Enter your username": "अपना उपयोगकर्ता नाम दर्ज करें",
+                "Email Id": "ईमेल आईडी",
+                "Enter your emailId": "अपना ईमेल आईडी दर्ज करें",
+                "Gender": "लिंग",
+                "Provide your gender": "अपना लिंग प्रदान करें",
+                "DOB": "जन्म तिथि",
+                "Choose DOB": "जन्मतिथि चुनें",
+                "Contact Number": "संपर्क संख्या",
+                "Enter your contact number": "अपना संपर्क नंबर दर्ज करें",
+                "Old Password": "पुराना पासवर्ड",
+                "Enter your current password": "अपने वर्तमान पासवर्ड को दर्ज करें",
+                "New Password": "नया पासवर्ड",
+                "Provide your new password": "अपना नया पासवर्ड प्रदान करें",
+                "Password": "पासवर्ड",
+                "Enter your Password": "अपना कूटशब्द भरें"
+            },
+            "message": {
+                "Preview": "पूर्व दर्शन",
+                "Confirm Upload": "अपलोड की पुष्टि करें",
+                "Cancel Upload": "अपलोड रद्द करें",
+                "User id not found": "यूज़र आईडी नहीं मिला",
+                "Delete Account details": "एक बार जब आप अपने खाते को हटाने की पुष्टि कर देते हैं, तो इसे 30 दिनों के लिए निष्क्रिय कर दिया जाएगा। इस अवधि के दौरान, यदि आप अपना मन बदलते हैं तो आप अपना खाता पुनः सक्रिय कर सकते हैं। 30 दिनों के बाद, आपका खाता स्थायी रूप से हटा दिया जाएगा, और सभी डेटा पुनर्प्राप्त नहीं किया जा सकेगा।",
+                "Are you sure you want to proceed": "क्या आप सुनिश्चित रूप से आगे बढ़ना चाहते हैं?",
+                "Confirm your account deletion request": "अपने खाता हटाने के अनुरोध की पुष्टि करने के लिए, कृपया अपनी साख प्रदान करें।",
+                "Account Deletion in Progress": "खाता हटाने का कार्य प्रगति पर है",
+                "Your account deletion request has been considered": "आपके खाता हटाने के अनुरोध पर विचार कर लिया गया है. आपका खाता अगले 30 दिनों के लिए निष्क्रिय कर दिया गया है. यदि आप इस अवधि के दौरान अपना मन बदलते हैं, तो आप बस लॉग इन करके और हमेशा की तरह जारी रखकर अपने खाते को पुनः सक्रिय कर सकते हैं। यदि 30 दिनों के भीतर कोई कार्रवाई नहीं की जाती है, तो आपका खाता और सभी संबद्ध डेटा स्थायी रूप से हटा दिया जाएगा और पुनर्प्राप्त नहीं किया जा सकेगा।",
+                "Thank you for using our service": "हमारी सेवा का उपयोग करने के लिए धन्यवाद।"
+            }
+        },
+        "userSetup": {
+            "component": {
+                "General Settings": "सामान्य सेटिंग्स",
+                "Dashboard Settings": "डैशबोर्ड सेटिंग्स",
+                "Report Settings": "रिपोर्ट सेटिंग्स"
+            },
+            "utils": {
+                "Update": "अद्यतन",
+                "Cancel": "रद्द करना",
+                "Configure your charts for Expenses": "व्यय के लिए अपने चार्ट कॉन्फ़िगर करें",
+                "Configure your charts for Investments": "निवेश के लिए अपने चार्ट कॉन्फ़िगर करें",
+                "Configure your charts for Incomes": "आय के लिए अपने चार्ट कॉन्फ़िगर करें",
+                "Duration": "अवधि",
+                "Daily": "दैनिक",
+                "Monthly": "महीने के",
+                "Yearly": "सालाना",
+                "Custom": "रिवाज़",
+                "Configure your Expense Reports": "अपनी व्यय रिपोर्ट कॉन्फ़िगर करें",
+                "Configure your Investment Reports": "अपनी निवेश रिपोर्ट कॉन्फ़िगर करें",
+                "Configure your Income Reports": "अपनी आय रिपोर्ट कॉन्फ़िगर करें",
+                "Daily Monthly Yearly Custom": "दैनिक / मासिक / वार्षिक / कस्टम"
+            },
+            "message": {
+                "Bar Chart": "बार चार्ट डेटा को अलग-अलग लंबाई की बार के रूप में दिखाते हैं, जहां लंबाई मापे जा रहे मान को दर्शाती है। प्रत्येक बार आम तौर पर एक श्रेणी का प्रतिनिधित्व करता है, जिससे विभिन्न समूहों में मूल्यों की तुलना करना आसान हो जाता है।",
+                "Pie Chart": "पाई चार्ट संपूर्ण का अनुपात या प्रतिशत दिखाते हैं, जहां प्रत्येक टुकड़ा कुल के सापेक्ष एक श्रेणी के हिस्से का प्रतिनिधित्व करता है। उनके गोलाकार आकार और स्पष्ट विभाजन के कारण उन्हें एक नज़र में समझना आसान है।",
+                "Line Chart": "लाइन चार्ट निरंतर समयावधि में डेटा रुझान दर्शाते हैं, परिवर्तन और पैटर्न दिखाते हैं। यह डेटा बिंदुओं को लाइनों से जोड़ता है, जिससे रुझान, उतार-चढ़ाव और रिश्तों को देखना आसान हो जाता है।"
+            }
+        }
+    }
+}
