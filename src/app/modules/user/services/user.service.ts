@@ -73,4 +73,14 @@ export class UserService {
     return this.httpClient.put<any>(URI, payload, this.httpOptions);
   }
 
+  getUserSetup(userId: string): Observable<any> {
+    const URI = `${this.accountsSvc}users/${userId}/user-setup`;
+    return this.httpClient.get<any>(URI, this.httpOptions);
+  }
+
+  updateUserSetup(userId: string, payload: any): Observable<any> {
+    const URI = `${this.accountsSvc}users/${userId}/user-setup`;
+    return this.httpClient.put(URI, payload, this.httpOptions);
+  }
+
 }

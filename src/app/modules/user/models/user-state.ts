@@ -11,6 +11,9 @@ class UserPermissions {
     scopeViewPermission: boolean = false;
     scopeEditPermission: boolean = false;
     scopeDeletePermission: boolean = false;
+    setupViewPermission: boolean = false;
+    setupEditPermission: boolean = false;
+    setupDeletePermission: boolean = false;
 }
 
 class UserSetup {

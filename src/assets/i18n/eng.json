@@ -1,6 +1,7 @@
 {
     "shared": {
-        "This page is currently under development": "This page is currently under development."
+        "This page is currently under development": "This page is currently under development.",
+        "You don't have access to view this page": "You don't have access to view this page, kindly contact with our team for help!"
     },
     "registerUserComponent": {
         "component": {
@@ -131,6 +132,31 @@
                 "Account Deletion in Progress": "Account Deletion in Progress",
                 "Your account deletion request has been considered": "Your account deletion request has been considered. Your account has been deactivated for the next 30 days. If you change your mind during this period, you can reactivate your account by simply logging in and continuing as usual. If no action is taken within 30 days, your account and all associated data will be permanently deleted and will be irretrievable.",
                 "Thank you for using our service": "Thank you for using our service."
+            }
+        },
+        "userSetup": {
+            "component": {
+                "General Settings": "General Settings",
+                "Dashboard Settings": "Dashboard Settings",
+                "Report Settings": "Report Settings"
+            },
+            "utils": {
+                "Update": "Update",
+                "Cancel": "Cancel",
+                "Configure your charts for Expenses": "Configure your charts for Expenses",
+                "Configure your charts for Investments": "Configure your charts for Investments",
+                "Configure your charts for Incomes": "Configure your charts for Incomes",
+                "Duration": "Duration",
+                "Daily": "Daily",
+                "Monthly": "Monthly",
+                "Yearly": "Yearly",
+                "Custom": "Custom",
+                "Daily Monthly Yearly Custom": "Daily / Monthly / Yearly / Custom"
+            },
+            "message": {
+                "Bar Chart": "Bar charts show data as bars of varying lengths, where the length represents the value being measured. Each bar typically represents a category, making it easy to compare values across different groups.",
+                "Pie Chart": "Pie charts show proportions or percentages of a whole, where each slice represents a category's share relative to the total. They are easy to understand at a glance due to their circular shape and clear divisions.",
+                "Line Chart": "ine charts depict data trends over a continuous time span, showing changes and patterns. It connects data points with lines, making it easy to see trends, fluctuations, and relationships."
             }
         }
     }

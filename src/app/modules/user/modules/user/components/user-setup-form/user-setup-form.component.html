@@ -1,0 +1,52 @@
+<div class="flex justify-between items-center">
+    <div class="text-[18px] card-header font-semibold">{{ header }}</div>
+    <div *ngIf="editPermission">
+        <div class="flex align-middle gap-4">
+            <div *ngFor="let action of actions">
+                <div *ngIf="action.type === 'submit'; else otherBtn">
+                    <button class="w-[100px] primary-btn h-10 text-[16px] rounded-sm" (click)="onSubmit()">{{ action.label }}</button>
+                </div>
+                <ng-template #otherBtn>
+                    <button class="w-[100px] secondary-btn h-10 text-[16px] rounded-sm" (click)="onCancel()">{{ action.label }}</button>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="border-b-2 my-3 line"></div>
+
+<form *ngIf="form" [formGroup]="form">
+    <div *ngFor="let dashboard of formData; let dashboardIndex = index" class="my-6">
+        <div class="text-[16px] card-header font-medium">{{ dashboard.label }}</div>
+        <div *ngFor="let category of dashboard.categories; let categoryIndex = index">
+            <div class="py-2">
+                <p class="text-heading-2 pt-4">{{ category.header }}: {{ category.duration }}</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div *ngFor="let setup of category.setup; let setupIndex = index">
+                        <div [formGroup]="toggles.at(findToggleIndex(dashboardIndex, categoryIndex, setupIndex))">
+                            <p class="text-heading-2 flex items-center">
+                                {{ setup.categoryDescription }}
+                                <span class="ml-2" *ngIf="setup.categoryName === 'bar-chart'">
+                                    <mat-icon fontIcon="help_outline" class="text-lg cursor-pointer" [matTooltip]="barChartDiscalimer" matTooltipPosition="after"></mat-icon>
+                                </span>
+                                <span class="ml-2" *ngIf="setup.categoryName === 'pie-chart'">
+                                    <mat-icon fontIcon="help_outline" class="text-lg cursor-pointer" [matTooltip]="pieChartDiscalimer" matTooltipPosition="after"></mat-icon>
+                                </span>
+                                <span class="ml-2" *ngIf="setup.categoryName === 'line-chart'">
+                                    <mat-icon fontIcon="help_outline" class="text-lg cursor-pointer" [matTooltip]="lineChartDiscalimer" matTooltipPosition="after"></mat-icon>
+                                </span>
+                            </p>
+                            <div class="w-1">
+                                <label class="toggle-btn">
+                                    <input type="checkbox" formControlName="value" class="checkbox">
+                                    <div class="slider"></div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
