@@ -62,8 +62,8 @@
     "userSection": {
         "userMenu": {
             "utils": {
-                "User Profile": "User Profile",
-                "User Setup": "User Setup",
+                "User Profile": "Your Profile",
+                "User Setup": "Your Setup",
                 "Home": "Home",
                 "Expenditure": "Expenditure",
                 "Funds": "Funds",
@@ -78,7 +78,9 @@
                 "Payment Options": "Payment Options",
                 "Category and Tags": "Category and Tags",
                 "Logout": "Logout",
-                "How to use the portal": "How to use the portal?"
+                "How to use the portal": "How to use the portal?",
+                "Email Id": "Email Id",
+                "Last Login": "Last Login"
             }
         },
         "userProfile": {
@@ -138,7 +140,9 @@
             "component": {
                 "General Settings": "General Settings",
                 "Dashboard Settings": "Dashboard Settings",
-                "Report Settings": "Report Settings"
+                "Report Settings": "Report Settings",
+                "General": "General",
+                "Setup": "Setup"
             },
             "utils": {
                 "Update": "Update",

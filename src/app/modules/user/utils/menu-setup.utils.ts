@@ -1,5 +1,5 @@
-import { Injectable } from "@angular/core";
-import { I18nService } from "../../shared/services/i18n.service";
+import { Injectable } from '@angular/core';
+import { I18nService } from '../../shared/services/i18n.service';
 
 @Injectable({
     providedIn: 'root'
@@ -11,34 +11,34 @@ export class MenuSetupUtils {
     
     constructor(private i18n: I18nService) {}
 
-    async getUserMenuHeaderData() {
+    getUserMenuHeaderData() {
         return [
             {
                 type: 'link',
-                title: await this.i18n.translate(`${this.menuPrefix}User Profile`),
+                title: this.i18n.translate(`${this.menuPrefix}Your Profile`),
                 link: '/user-profile',
-                icon: 'create'
+                icon: 'person'
             },
             {
                 type: 'link',
-                title: await this.i18n.translate(`${this.menuPrefix}User Setup`),
+                title: this.i18n.translate(`${this.menuPrefix}Your Setup`),
                 link: '/user-setup',
                 icon: 'settings'
             },
             {
                 type: 'link',
-                title: await this.i18n.translate(`${this.menuPrefix}Logout`),
+                title: this.i18n.translate(`${this.menuPrefix}Logout`),
                 link: '/logout',
                 icon: 'logout'
             }
         ];
     }
 
-    async getUserMenuSetupData() {
+    getUserMenuSetupData() {
         return [
             {
                 type: 'link',
-                title: await this.i18n.translate(`${this.menuPrefix}Home`),
+                title: this.i18n.translate(`${this.menuPrefix}Home`),
                 open: false,
                 link: '/',
                 icon: 'home',
@@ -46,7 +46,7 @@ export class MenuSetupUtils {
             },
             {
                 type: 'link',
-                title: await this.i18n.translate(`${this.menuPrefix}Dashboard`),
+                title: this.i18n.translate(`${this.menuPrefix}Dashboard`),
                 open: false,
                 link: '/dashboard',
                 icon: 'analytics',
@@ -54,7 +54,7 @@ export class MenuSetupUtils {
             },
             {
                 type: 'link',
-                title: await this.i18n.translate(`${this.menuPrefix}Reports`),
+                title: this.i18n.translate(`${this.menuPrefix}Reports`),
                 open: false,
                 link: '/report',
                 icon: 'assignment',
@@ -62,7 +62,7 @@ export class MenuSetupUtils {
             },
             {
                 type: 'link',
-                title: await this.i18n.translate(`${this.menuPrefix}Payment Options`),
+                title: this.i18n.translate(`${this.menuPrefix}Payment Options`),
                 open: false,
                 link: '/card-account',
                 icon: 'account_balance_wallet',
@@ -70,7 +70,7 @@ export class MenuSetupUtils {
             },
             {
                 type: 'link',
-                title: await this.i18n.translate(`${this.menuPrefix}Category and Tags`),
+                title: this.i18n.translate(`${this.menuPrefix}Category and Tags`),
                 open: false,
                 link: '/card-account',
                 icon: 'loyalty',
@@ -78,21 +78,21 @@ export class MenuSetupUtils {
             },
             {
                 type: 'parent',
-                title: await this.i18n.translate(`${this.menuPrefix}Expenditure`),
+                title: this.i18n.translate(`${this.menuPrefix}Expenditure`),
                 open: false,
                 link: null,
                 icon: 'payments',
                 children: [
                     {
                         type: 'link',
-                        title: await this.i18n.translate(`${this.menuPrefix}Register Expense`),
+                        title: this.i18n.translate(`${this.menuPrefix}Register Expense`),
                         open: false,
                         link: '/expenditure/register-expense',
                         icon: 'payments'
                     },
                     {
                         type: 'link',
-                        title: await this.i18n.translate(`${this.menuPrefix}Register Credit Expense`),
+                        title: this.i18n.translate(`${this.menuPrefix}Register Credit Expense`),
                         open: false,
                         link: '/expenditure/register-credit-expense',
                         icon: 'credit_card'
@@ -101,14 +101,14 @@ export class MenuSetupUtils {
             },
             {
                 type: 'parent',
-                title: await this.i18n.translate(`${this.menuPrefix}Funds`),
+                title: this.i18n.translate(`${this.menuPrefix}Funds`),
                 open: false,
                 link: null,
                 icon: 'savings',
                 children: [
                     {
                         type: 'link',
-                        title: await this.i18n.translate(`${this.menuPrefix}Add Funds`),
+                        title: this.i18n.translate(`${this.menuPrefix}Add Funds`),
                         open: false,
                         link: '/funds/add-funds',
                         icon: 'attach_money'
@@ -117,14 +117,14 @@ export class MenuSetupUtils {
             },
             {
                 type: 'parent',
-                title: await this.i18n.translate(`${this.menuPrefix}Investment`),
+                title: this.i18n.translate(`${this.menuPrefix}Investment`),
                 open: false,
                 link: null,
                 icon: 'trending_up',
                 children: [
                     {
                         type: 'link',
-                        title: await this.i18n.translate(`${this.menuPrefix}Register Investment`),
+                        title: this.i18n.translate(`${this.menuPrefix}Register Investment`),
                         open: false,
                         link: '/investment/register-investment',
                         icon: 'timeline'

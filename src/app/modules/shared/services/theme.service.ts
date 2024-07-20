@@ -28,11 +28,20 @@ export class ThemeService {
     const userTheme = userSetup?.filter((val: any) => val.categoryName === 'user-theme').map((val: any) => val.value)[0];
     const backgroundImg = userTheme ? `assets/img/${userTheme}-bg.jpg` : 'assets/img/light-blue-bg.jpg';
 
-    this.userLang$.next(userLang);
-    this.userTheme$.next(userTheme);
-    this.backgroundImgSubject.next(backgroundImg);
-    
-    this.loadTheme(userTheme);
+    const currentUserLang = this.userLang$.getValue();
+    const currentUserTheme = this.userTheme$.getValue();
+    const currentBackgroundImg = this.backgroundImgSubject.getValue();
+
+    if (currentUserLang !== userLang) {
+      this.userLang$.next(userLang);
+    }
+    if (currentUserTheme !== userTheme) {
+      this.userTheme$.next(userTheme);
+      this.loadTheme(userTheme);
+    }
+    if (currentBackgroundImg !== backgroundImg) {
+      this.backgroundImgSubject.next(backgroundImg);
+    }
   }
 
   loadTheme(theme: string) {

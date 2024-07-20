@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 // Components
 import { FormPopupComponent } from './components/form-popup/form-popup.component';
@@ -12,6 +14,7 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { MessagePopupComponent } from './components/message-popup/message-popup.component';
 import { UnderDevelopmentComponent } from './components/under-development/under-development.component';
 import { NoAccessComponent } from './components/no-access/no-access.component';
+import { NotificationPopupComponent } from './components/notification-popup/notification-popup.component';
 
 // Services
 import { I18nService } from './services/i18n.service';
@@ -19,12 +22,14 @@ import { NotificationService } from './services/notification.service';
 import { LoaderService } from './services/loader.service';
 
 // Modules
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatTabsModule } from '@angular/material/tabs';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSidenavModule } from '@angular/material/sidenav'; 
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -32,7 +37,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     LoaderComponent,
     MessagePopupComponent,
     UnderDevelopmentComponent,
-    NoAccessComponent
+    NoAccessComponent,
+    NotificationPopupComponent
   ],
   imports: [
     CommonModule,
@@ -42,12 +48,17 @@ import { MatDialogModule } from '@angular/material/dialog';
     ReactiveFormsModule,
     BrowserModule,
     BrowserAnimationsModule,
-    MatSnackBarModule,
     MatIconModule,
     MatTooltipModule,
+    MatDialogModule,
     MatSidenavModule,
-    MatTabsModule,
-    MatDialogModule
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     I18nService,
@@ -64,8 +75,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     BrowserAnimationsModule,
     MatIconModule,
     MatTooltipModule,
+    MatDialogModule,
     MatSidenavModule,
-    MatTabsModule,
     LoaderComponent,
     UnderDevelopmentComponent,
     NoAccessComponent

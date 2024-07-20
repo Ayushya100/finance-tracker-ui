@@ -1,0 +1,27 @@
+<p class="text-2 pl-2">{{ header }}</p>
+<div class="w-full md:w-11/12">
+    <div class="relative inline-block w-full" (mouseenter)="toggleDropdown(true)" (mouseleave)="toggleDropdown(false)">
+        <div class="flex flex-col relative">
+            <div class="form-field text-sm flex justify-between items-center min-h-10 w-full px-4 rounded-md cursor-pointer">
+                <span>{{ selectedOption }}</span>
+                <span class="inline-block cursor-pointer select-none"
+                    (mouseover)="clearDropdownEnabled ? showClearIcon = true : false"
+                    (mouseout)="showClearIcon = false">
+                    <ng-container *ngIf="showClearIcon && clearDropdownEnabled; else dropdownToggleIcon">
+                        <span class="text-red-600" (click)="clearSelection()">&#10005;</span>
+                    </ng-container>
+                    <ng-template #dropdownToggleIcon>
+                        <svg [ngClass]="{'rotate-0': !isOpen, 'rotate-180': isOpen}" class="arrow" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+                            <path class="icon-color" d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"></path>
+                        </svg>
+                    </ng-template>
+                </span>
+            </div>
+            <div class="absolute top-[100%] left-0 z-10 w-full px-1 dropdown-field rounded-md" *ngIf="isOpen">
+                <div class="dropdown-selected min-h-8 my-1 px-3 flex items-center rounded-md cursor-pointer" *ngFor="let option of dropdownOptions.options" (click)="onValueChange(option.value)">
+                    {{ option.viewValue }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

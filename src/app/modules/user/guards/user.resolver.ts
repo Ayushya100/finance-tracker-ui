@@ -1,10 +1,6 @@
-import { Injectable } from '@angular/core';
-import {
-  Router, Resolve,
-  RouterStateSnapshot,
-  ActivatedRouteSnapshot
-} from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { inject, Injectable } from '@angular/core';
+import { RouterStateSnapshot, ActivatedRouteSnapshot, ResolveFn } from '@angular/router';
+import { catchError, map, Observable, of } from 'rxjs';
 
 // Services
 import { AuthService } from '../services/auth.service';
@@ -15,7 +11,7 @@ import { I18nService } from '../../shared/services/i18n.service';
 @Injectable({
   providedIn: 'root'
 })
-export class UserResolver implements Resolve<any> {
+export class UserResolverSVC {
 
   constructor(
     private authService: AuthService,
@@ -24,10 +20,10 @@ export class UserResolver implements Resolve<any> {
     private i18n: I18nService
   ) {}
 
-  getUserInfo(): any {
+  getUserInfo(): Observable<any> {
     const userId = this.authService.getUserId();
-    this.userService.getUserInfo(userId).subscribe({
-      next: (res) => {
+    return this.userService.getUserInfo(userId).pipe(
+      map((res) => {
         const userData = res.data;
         this.authService.setUserRole(userData.userRole);
         this.authService.setUserScope(userData.userScopes);
@@ -35,14 +31,15 @@ export class UserResolver implements Resolve<any> {
         this.authService.setUserData(userData.userRecord);
         this.i18n.refreshUserSetup(userData.userSetup);
         return userData.userRecord;
-      },
-      error: (err: any) => {
+      }),
+      catchError((err) => {
         this.notificationService.error(err);
-      }
-    });
+        return of(null);
+      })
+    );
   }
+}
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
-    return this.getUserInfo();
-  }
+export const UserResolver: ResolveFn<any> = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+  return inject(UserResolverSVC).getUserInfo();
 }

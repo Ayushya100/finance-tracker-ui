@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange, SimpleChanges } from '@angular/core';
 import * as _ from 'lodash';
 
-
 @Component({
   selector: 'app-user-details-form',
   templateUrl: './user-details-form.component.html',

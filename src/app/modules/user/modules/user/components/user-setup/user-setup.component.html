@@ -1,35 +1,38 @@
 <div *ngIf="viewPermission; else notAccessible">
-    <div class="w-full h-full space-y-4">
-        <div class="card p-5">
-            <div class="flex justify-between items-center">
-                <div class="text-[18px] card-header font-bold">{{ generalHeader }}</div>
+    <div class="w-full h-full space-y-4 card-header">
+        <div>
+            <div class="">
+                <span class="text-2 text-sm font-light">{{ pageHeader1 }} > </span>
+                <span class="text-3 text-lg font-bold">{{ pageHeader2 }}</span>
+            </div>
+        </div>
+        <div class="card p-4 md:p-5 w-full">
+            <div class="flex justify-between items-center w-[99%] mx-auto">
+                <div class="text-sm font-medium">{{ generalHeader }}</div>
                 <div *ngIf="editPermission">
-                    <div class="flex align-middle gap-4">
+                    <div class="flex align-middle gap-2 md:gap-4">
                         <div *ngFor="let action of setupActions">
                             <div *ngIf="action.type === 'submit'; else otherBtn">
-                                <button class="w-[100px] primary-btn h-10 text-[16px] rounded-sm" (click)="onGeneralSetupSubmit()">{{ action.label }}</button>
+                                <core-button [btnHeader]="action.label" [btnType]="'primary'" (submit)="onGeneralSetupSubmit()"></core-button>
                             </div>
                             <ng-template #otherBtn>
-                                <button class="w-[100px] secondary-btn h-10 text-[16px] rounded-sm" (click)="onGeneralCancelSubmit()">{{ action.label }}</button>
+                                <core-button [btnHeader]="action.label" [btnType]="'secondary'" (submit)="onGeneralCancelSubmit()"></core-button>
                             </ng-template>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="border-b-2 my-3 line"></div>
-    
+
             <form [formGroup]="generalForm">
                 <div formArrayName="settings">
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <div *ngFor="let setting of options.controls; let setupIndex = index" [formGroupName]="setupIndex">
-                            <p class="text-heading-2 flex items-center">
-                                {{ setting.value.categoryDescription }}
-                            </p>
-                            <div>
-                                <select class="form-field min-h-10 w-11/12 px-4 rounded-sm" name="dropdown" formControlName="value">
-                                    <option class="form-field" *ngFor="let option of setting.value.options" [value]="option.value">{{ option.viewValue }}</option>
-                                </select>
-                            </div>
+                            <core-dropdown formControlName="value"
+                                [header]="setting.value.categoryDescription"
+                                [dropdownOptions]="setting.value"
+                                [clearDropdownEnabled]="false">
+                            </core-dropdown>
                         </div>
                     </div>
                 </div>

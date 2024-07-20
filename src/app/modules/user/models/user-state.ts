@@ -14,6 +14,9 @@ class UserPermissions {
     setupViewPermission: boolean = false;
     setupEditPermission: boolean = false;
     setupDeletePermission: boolean = false;
+    paymentViewPermission: boolean = false;
+    paymentEditPermission: boolean = false;
+    paymentDeletePermission: boolean = false;
 }
 
 class UserSetup {

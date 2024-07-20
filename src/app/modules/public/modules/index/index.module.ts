@@ -1,17 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginUserComponent } from './components/login-user/login-user.component';
-import { RegisterUserComponent } from './components/register-user/register-user.component';
-import { VerifyUserComponent } from './components/verify-user/verify-user.component';
-
-// Modules
+import { UserLoginComponent } from './components/user-login/user-login.component';
+import { UserRegisterComponent } from './components/user-register/user-register.component';
+import { UserVerifyComponent } from './components/user-verify/user-verify.component';
 import { CoreModule } from 'src/app/modules/core/core.module';
 
 @NgModule({
   declarations: [
-    LoginUserComponent,
-    RegisterUserComponent,
-    VerifyUserComponent
+    UserLoginComponent,
+    UserRegisterComponent,
+    UserVerifyComponent
   ],
   imports: [
     CommonModule,

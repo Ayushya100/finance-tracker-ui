@@ -13,8 +13,8 @@ export class NoAccessComponent implements OnInit {
 
   constructor(private i18n: I18nService) {}
 
-  async ngOnInit(): Promise<void> {
-    this.message = await this.i18n.translate(`${this.commonPrefix}You don't have access to view this page`);
+  ngOnInit(): void {
+    this.message = this.i18n.translate(`${this.commonPrefix}You don't have access to view this page`);
   }
 
 }

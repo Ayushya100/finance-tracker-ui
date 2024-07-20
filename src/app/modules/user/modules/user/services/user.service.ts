@@ -6,7 +6,7 @@ import { BASE_PATH } from 'src/app/app.tokens';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UserGeneralService {
 
   private accountsSvc = '/accounts-svc/api/v1.0/';
 
@@ -21,6 +21,41 @@ export class UserService {
     if (this.basePath) {
       this.accountsSvc = this.basePath + this.accountsSvc;
     }
+  }
+
+  updateUserInfo(userId: string, payload: any): Observable<any> {
+    const URI = `${this.accountsSvc}users/user-info/${userId}`;
+    return this.httpClient.put<any>(URI, payload, this.httpOptions);
+  }
+
+  updateUserPassword(userId: string, payload: any): Observable<any> {
+    const URI = `${this.accountsSvc}users/user-password/${userId}`;
+    return this.httpClient.put<any>(URI, payload, this.httpOptions);
+  }
+
+  updateUserImage(userId: string, formData: any): Observable<any> {
+    const URI = `${this.accountsSvc}users/profile-image/${userId}`;
+    return this.httpClient.put<any>(URI, formData);
+  }
+
+  deleteUserImage(userId: string): Observable<any> {
+    const URI = `${this.accountsSvc}users/profile-image/${userId}`;
+    return this.httpClient.delete<any>(URI, this.httpOptions);
+  }
+
+  deactivateUserAccount(userId: string, payload: any): Observable<any> {
+    const URI = `${this.accountsSvc}users/deactivate-user/${userId}`;
+    return this.httpClient.put<any>(URI, payload, this.httpOptions);
+  }
+
+  getUserSetup(userId: string): Observable<any> {
+    const URI = `${this.accountsSvc}users/${userId}/user-setup`;
+    return this.httpClient.get<any>(URI, this.httpOptions);
+  }
+
+  updateUserSetup(userId: string, payload: any): Observable<any> {
+    const URI = `${this.accountsSvc}users/${userId}/user-setup`;
+    return this.httpClient.put(URI, payload, this.httpOptions);
   }
 
 }

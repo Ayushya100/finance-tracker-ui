@@ -62,8 +62,8 @@
     "userSection": {
         "userMenu": {
             "utils": {
-                "User Profile": "उपयोगकर्ता रूपरेखा",
-                "User Setup": "उपयोगकर्ता सेटअप",
+                "User Profile": "आपकी रूपरेखा",
+                "User Setup": "आपकी सेटअप",
                 "Home": "घर",
                 "Expenditure": "व्यय",
                 "Funds": "फंड",
@@ -78,7 +78,9 @@
                 "Payment Options": "भुगतान विकल्प",
                 "Category and Tags": "श्रेणी और टैग",
                 "Logout": "लॉग आउट",
-                "How to use the portal": "पोर्टल का उपयोग कैसे करें?"
+                "How to use the portal": "पोर्टल का उपयोग कैसे करें?",
+                "Email Id": "ईमेल आईडी",
+                "Last Login": "आखरी लॉगइन"
             }
         },
         "userProfile": {
@@ -138,7 +140,9 @@
             "component": {
                 "General Settings": "सामान्य सेटिंग्स",
                 "Dashboard Settings": "डैशबोर्ड सेटिंग्स",
-                "Report Settings": "रिपोर्ट सेटिंग्स"
+                "Report Settings": "रिपोर्ट सेटिंग्स",
+                "General": "सामान्य",
+                "Setup": "सेटअप"
             },
             "utils": {
                 "Update": "अद्यतन",

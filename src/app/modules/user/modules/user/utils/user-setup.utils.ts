@@ -11,109 +11,109 @@ export class UserSetupUtils {
 
     constructor(private i18n: I18nService) {}
 
-    async getUserSetupActions() {
+    getUserSetupActions() {
         return {
             actions: [
                 {
-                    label: await this.i18n.translate(`${this.utilsPrefix}Update`),
+                    label: this.i18n.translate(`${this.utilsPrefix}Update`),
                     type: 'submit'
                 },
                 {
-                    label: await this.i18n.translate(`${this.utilsPrefix}Cancel`),
+                    label: this.i18n.translate(`${this.utilsPrefix}Cancel`),
                     type: 'cancel'
                 }
             ]
         };
     }
 
-    async getUserDashboardMetadata() {
+    getUserDashboardMetadata() {
         return {
             fields: [
                 {
-                    label: await this.i18n.translate(`${this.utilsPrefix}Configure your charts for Expenses`),
+                    label: this.i18n.translate(`${this.utilsPrefix}Configure your charts for Expenses`),
                     type: 'Expense',
                     categories: [
                         {
-                            header: await this.i18n.translate(`${this.utilsPrefix}Duration`),
-                            duration: await this.i18n.translate(`${this.utilsPrefix}Daily`),
+                            header: this.i18n.translate(`${this.utilsPrefix}Duration`),
+                            duration: this.i18n.translate(`${this.utilsPrefix}Daily`),
                             value: 'daily',
                             setup: []
                         },
                         {
-                            header: await this.i18n.translate(`${this.utilsPrefix}Duration`),
-                            duration: await this.i18n.translate(`${this.utilsPrefix}Monthly`),
+                            header: this.i18n.translate(`${this.utilsPrefix}Duration`),
+                            duration: this.i18n.translate(`${this.utilsPrefix}Monthly`),
                             value: 'monthly',
                             setup: []
                         },
                         {
-                            header: await this.i18n.translate(`${this.utilsPrefix}Duration`),
-                            duration: await this.i18n.translate(`${this.utilsPrefix}Yearly`),
+                            header: this.i18n.translate(`${this.utilsPrefix}Duration`),
+                            duration: this.i18n.translate(`${this.utilsPrefix}Yearly`),
                             value: 'yearly',
                             setup: []
                         },
                         // {
-                        //     header: await this.i18n.translate(`${this.utilsPrefix}Duration`),
-                        //     duration: await this.i18n.translate(`${this.utilsPrefix}Custom`),
+                        //     header: this.i18n.translate(`${this.utilsPrefix}Duration`),
+                        //     duration: this.i18n.translate(`${this.utilsPrefix}Custom`),
                         //     value: 'custom',
                         //     setup: []
                         // }
                     ]
                 },
                 {
-                    label: await this.i18n.translate(`${this.utilsPrefix}Configure your charts for Investments`),
+                    label: this.i18n.translate(`${this.utilsPrefix}Configure your charts for Investments`),
                     type: 'Investment',
                     categories: [
                         {
-                            header: await this.i18n.translate(`${this.utilsPrefix}Duration`),
-                            duration: await this.i18n.translate(`${this.utilsPrefix}Daily`),
+                            header: this.i18n.translate(`${this.utilsPrefix}Duration`),
+                            duration: this.i18n.translate(`${this.utilsPrefix}Daily`),
                             value: 'daily',
                             setup: []
                         },
                         {
-                            header: await this.i18n.translate(`${this.utilsPrefix}Duration`),
-                            duration: await this.i18n.translate(`${this.utilsPrefix}Monthly`),
+                            header: this.i18n.translate(`${this.utilsPrefix}Duration`),
+                            duration: this.i18n.translate(`${this.utilsPrefix}Monthly`),
                             value: 'monthly',
                             setup: []
                         },
                         {
-                            header: await this.i18n.translate(`${this.utilsPrefix}Duration`),
-                            duration: await this.i18n.translate(`${this.utilsPrefix}Yearly`),
+                            header: this.i18n.translate(`${this.utilsPrefix}Duration`),
+                            duration: this.i18n.translate(`${this.utilsPrefix}Yearly`),
                             value: 'yearly',
                             setup: []
                         },
                         // {
-                        //     header: await this.i18n.translate(`${this.utilsPrefix}Duration`),
-                        //     duration: await this.i18n.translate(`${this.utilsPrefix}Custom`),
+                        //     header: this.i18n.translate(`${this.utilsPrefix}Duration`),
+                        //     duration: this.i18n.translate(`${this.utilsPrefix}Custom`),
                         //     value: 'custom',
                         //     setup: []
                         // }
                     ]
                 },
                 {
-                    label: await this.i18n.translate(`${this.utilsPrefix}Configure your charts for Incomes`),
+                    label: this.i18n.translate(`${this.utilsPrefix}Configure your charts for Incomes`),
                     type: 'Income',
                     categories: [
                         {
-                            header: await this.i18n.translate(`${this.utilsPrefix}Duration`),
-                            duration: await this.i18n.translate(`${this.utilsPrefix}Daily`),
+                            header: this.i18n.translate(`${this.utilsPrefix}Duration`),
+                            duration: this.i18n.translate(`${this.utilsPrefix}Daily`),
                             value: 'daily',
                             setup: []
                         },
                         {
-                            header: await this.i18n.translate(`${this.utilsPrefix}Duration`),
-                            duration: await this.i18n.translate(`${this.utilsPrefix}Monthly`),
+                            header: this.i18n.translate(`${this.utilsPrefix}Duration`),
+                            duration: this.i18n.translate(`${this.utilsPrefix}Monthly`),
                             value: 'monthly',
                             setup: []
                         },
                         {
-                            header: await this.i18n.translate(`${this.utilsPrefix}Duration`),
-                            duration: await this.i18n.translate(`${this.utilsPrefix}Yearly`),
+                            header: this.i18n.translate(`${this.utilsPrefix}Duration`),
+                            duration: this.i18n.translate(`${this.utilsPrefix}Yearly`),
                             value: 'yearly',
                             setup: []
                         },
                         // {
-                        //     header: await this.i18n.translate(`${this.utilsPrefix}Duration`),
-                        //     duration: await this.i18n.translate(`${this.utilsPrefix}Custom`),
+                        //     header: this.i18n.translate(`${this.utilsPrefix}Duration`),
+                        //     duration: this.i18n.translate(`${this.utilsPrefix}Custom`),
                         //     value: 'custom',
                         //     setup: []
                         // }
@@ -123,40 +123,40 @@ export class UserSetupUtils {
         };
     }
 
-    async getUserReportMetadata() {
+    getUserReportMetadata() {
         return {
             fields: [
                 {
-                    label: await this.i18n.translate(`${this.utilsPrefix}Configure your Expense Reports`),
+                    label: this.i18n.translate(`${this.utilsPrefix}Configure your Expense Reports`),
                     type: 'Expense',
                     categories: [
                         {
-                            header: await this.i18n.translate(`${this.utilsPrefix}Duration`),
-                            duration: await this.i18n.translate(`${this.utilsPrefix}Daily Monthly Yearly Custom`),
+                            header: this.i18n.translate(`${this.utilsPrefix}Duration`),
+                            duration: this.i18n.translate(`${this.utilsPrefix}Daily Monthly Yearly Custom`),
                             value: 'custom',
                             setup: []
                         }
                     ]
                 },
                 {
-                    label: await this.i18n.translate(`${this.utilsPrefix}Configure your Investment Reports`),
+                    label: this.i18n.translate(`${this.utilsPrefix}Configure your Investment Reports`),
                     type: 'Investment',
                     categories: [
                         {
-                            header: await this.i18n.translate(`${this.utilsPrefix}Duration`),
-                            duration: await this.i18n.translate(`${this.utilsPrefix}Daily Monthly Yearly Custom`),
+                            header: this.i18n.translate(`${this.utilsPrefix}Duration`),
+                            duration: this.i18n.translate(`${this.utilsPrefix}Daily Monthly Yearly Custom`),
                             value: 'custom',
                             setup: []
                         }
                     ]
                 },
                 {
-                    label: await this.i18n.translate(`${this.utilsPrefix}Configure your Income Reports`),
+                    label: this.i18n.translate(`${this.utilsPrefix}Configure your Income Reports`),
                     type: 'Income',
                     categories: [
                         {
-                            header: await this.i18n.translate(`${this.utilsPrefix}Duration`),
-                            duration: await this.i18n.translate(`${this.utilsPrefix}Daily Monthly Yearly Custom`),
+                            header: this.i18n.translate(`${this.utilsPrefix}Duration`),
+                            duration: this.i18n.translate(`${this.utilsPrefix}Daily Monthly Yearly Custom`),
                             value: 'custom',
                             setup: []
                         }

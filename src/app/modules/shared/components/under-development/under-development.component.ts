@@ -13,8 +13,8 @@ export class UnderDevelopmentComponent implements OnInit {
 
   constructor(private i18n: I18nService) {}
 
-  async ngOnInit(): Promise<void> {
-    this.message = await this.i18n.translate(`${this.commonPrefix}This page is currently under development`);
+  ngOnInit(): void {
+    this.message = this.i18n.translate(`${this.commonPrefix}This page is currently under development`);
   }
 
 }
