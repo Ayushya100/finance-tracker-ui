@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-// Components
+// Component
 import { UserHomeComponent } from './components/user-home/user-home.component';
+
+// Modules
 import { SharedModule } from 'src/app/modules/shared/shared.module';
 
 @NgModule({

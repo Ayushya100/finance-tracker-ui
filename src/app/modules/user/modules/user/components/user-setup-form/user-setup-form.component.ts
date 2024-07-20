@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray } from '@angular/forms';
+
+// Services
 import { I18nService } from 'src/app/modules/shared/services/i18n.service';
 
 @Component({
@@ -27,10 +29,10 @@ export class UserSetupFormComponent implements OnInit {
 
   constructor(private i18n: I18nService) {}
   
-  async ngOnInit(): Promise<void> {
-    this.barChartDiscalimer = await this.i18n.translate(`${this.msgPrefix}Bar Chart`);
-    this.pieChartDiscalimer = await this.i18n.translate(`${this.msgPrefix}Pie Chart`);
-    this.lineChartDiscalimer = await this.i18n.translate(`${this.msgPrefix}Line Chart`);
+  ngOnInit(): void {
+    this.barChartDiscalimer = this.i18n.translate(`${this.msgPrefix}Bar Chart`);
+    this.pieChartDiscalimer = this.i18n.translate(`${this.msgPrefix}Pie Chart`);
+    this.lineChartDiscalimer = this.i18n.translate(`${this.msgPrefix}Line Chart`);
   }
 
   get toggles(): any {

@@ -1,20 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
-// Services
-import { AuthService } from './services/auth.service';
-import { AuthInterceptorService } from './services/authInterceptor.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // Component
 import { CoreComponent } from './components/core/core.component';
+
+// Services
+import { AuthService } from './services/auth.service';
+import { UserService } from './services/user.service';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
 
 // Modules
 import { SharedModule } from '../shared/shared.module';
 import { UserProfileModule } from './modules/user/userProfile.module';
 import { IndexModule } from './modules/index/index.module';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
+import { PaymentModule } from './modules/payment options/payment.module';
 
 @NgModule({
   declarations: [
@@ -26,10 +28,12 @@ import { DashboardModule } from './modules/dashboard/dashboard.module';
     SharedModule,
     UserProfileModule,
     IndexModule,
-    DashboardModule
+    DashboardModule,
+    PaymentModule
   ],
   providers: [
     AuthService,
+    UserService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,

@@ -1,5 +1,5 @@
-import { UserFormsUtils } from './register-user-utils';
+import { UserFormsUtils } from './user-forms-utils';
 
 export {
     UserFormsUtils
-}
+};

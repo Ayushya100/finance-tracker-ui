@@ -1,4 +1,6 @@
-/* TODO - Final */
+.text-type {
+    font-family: Arial, Helvetica, sans-serif;
+}
 .header {
     color: #0c0c0c;
 }
@@ -8,24 +10,30 @@
 }
 
 .navbar {
-    background-color: rgba(0, 0, 0, 0.15);
+    background-color: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(21px);
     -webkit-backdrop-filter: blur(21px);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+    box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.45);
     color: #3d3d3d;
 }
 .secondary-navbar {
-    background-color: rgba(0, 0, 0, 0.15);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+    background-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.45);
     color: #1c1c1c;
+}
+.profile-img {
+    border: 1px solid #1A1F24;
 }
 
 .sidebar {
-    background-color: rgba(0, 0, 0, 0.15);
+    background-color: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(21px);
     -webkit-backdrop-filter: blur(21px);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+    box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.45);
     color: #1c1c1c;
+}
+.sidebar-dash {
+    border: 1px solid #a7a7a7;
 }
 .sidebar-bg {
     backdrop-filter: blur(21px);
@@ -34,21 +42,33 @@
 }
 
 .sidebar-btn {
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
     color: #242424;
     transition: 0.4s ease;
 }
-.sidebar-btn:hover {
-    background-color: #ffffff;
-    border-color: #f5f5f5;
-    box-shadow: 0 8px 32px 0 rgba(31, 31, 31, 0.36);
+.sidebar-btn:not(:active):hover, .sidebar-btn:focus {
+    background-color: #e4e4e4;
+}
+.sidebar-btn:focus, .sidebar-btn:active {
+    background-color: #e0e0e0;
+    outline: none;
+}
+.sidebar-active-btn {
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
     color: #242424;
-    transition: 0.4s ease-in-out;
+    font-weight: 500;
+    background-color: #dbdbdb;
+    transition: 0.4s ease;
+    border-right: 7px solid #717171;
 }
 .sidebar-divider {
     border-color: #1c1c1c;
 }
 .sidebar-header {
-    background-color: rgba(0, 0, 0, 0);
     color: #1c1c1c;
 }
 .sidebar-link {
@@ -200,19 +220,25 @@
         rgba(255, 255, 255, 0.05),
         rgba(255, 255, 255, 0.05)
     );
-    backdrop-filter: blur(1px);
-    -webkit-backdrop-filter: blur(1px);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
-    border: 1px solid rgb(255, 155, 155, 0.1);
+    border: 1px solid rgba(255, 155, 155, 0.1);
     border-radius: 5px;
 }
 .card-header {
     color: #1c1c1c;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .form-field {
-    background-color: #ffffff;
+    background-color: rgba(210, 210, 210, 0.5);
     color: #1c1c1c;
+}
+.dropdown-field {
+    background-color: #e6e6e6;
+}
+.dropdown-selected:hover {
+    transition: 200ms ease-in-out;
+    background-color: #d2d2d2;
 }
 
 /* Toggle Button */
@@ -253,7 +279,71 @@
 
 /* Texts */
 .text-heading-2 {
+    color: #181818;
+}
+.text-2 {
     color: #202020;
+}
+.text-3 {
+    color: #717171;
+}
+.icon-color {
+    background-color: #242424;
+    fill: #242424;
+}
+
+.notification-popup-bg {
+    background-color: #ffffff;
+}
+.notification-error-icon-bg {
+    background-color: #ffffff0d;
+}
+.notification-success-icon-bg {
+    background-color: #dcfce7;
+}
+.notification-btn {
+    color: #2b2b2b;
+}
+.notification-btn:hover {
+    background-color: #e0e0e01a;
+    color: #2b2b2b;
+}
+.notification-msg {
+    color: #2b2b2b;
+}
+
+.loader {
+    border-right-color: #052137;
+}
+
+.active-icon {
+    color: #313131;
+}
+.inactive-icon {
+    color: #242424;
+}
+.inactive-icon:hover {
+    color: #313131;
+    transition: 0.2s ease-in-out;
+}
+
+.user-popup {
+    background-color: rgba(223, 223, 223, 0.15);
+    backdrop-filter: blur(21px);
+    -webkit-backdrop-filter: blur(21px);
+    box-shadow: 0 8px 32px 0 rgba(155, 155, 155, 0.45);
+    color: #202020;
+}
+
+.bank-card {
+    border: 1px;
+    background: linear-gradient(#2c2c2c, #0F0F0F);
+    box-shadow: 5px 5px 20px #101010;
+    transition: 0.3s ease-in-out;
+}
+.bank-card:hover {
+    box-shadow: 8px 8px 20px #101010, -8px -8px 20px #101010;
+    transition: 0.3s ease-in-out;
 }
 
 /* Media query */

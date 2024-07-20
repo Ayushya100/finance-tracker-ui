@@ -1,0 +1,6 @@
+<div *ngIf="btnType === 'primary'; else otherBtn">
+    <button class="px-4 py-2 primary-btn text-xs rounded-md md:text-sm" (click)="onSubmit()">{{ btnHeader }}</button>
+</div>
+<ng-template #otherBtn>
+    <button class="px-4 py-2 secondary-btn text-xs rounded-md md:text-sm" (click)="onSubmit()">{{ btnHeader }}</button>
+</ng-template>

@@ -17,6 +17,8 @@ export class UserSetupComponent implements OnInit {
 
   userPrefix: string = 'userSection.userSetup.component.';
 
+  pageHeader1: string = '';
+  pageHeader2: string = '';
   generalHeader: string = '';
   dashboardHeader: string = '';
   reportHeader: string = '';
@@ -94,14 +96,16 @@ export class UserSetupComponent implements OnInit {
     });
   }
 
-  async ngOnInit(): Promise<void> {
-    this.generalHeader = await this.i18n.translate(`${this.userPrefix}General Settings`);
-    this.dashboardHeader = await this.i18n.translate(`${this.userPrefix}Dashboard Settings`);
-    this.reportHeader = await this.i18n.translate(`${this.userPrefix}Report Settings`);
+  ngOnInit(): void {
+    this.pageHeader1 = this.i18n.translate(`${this.userPrefix}General`);
+    this.pageHeader2 = this.i18n.translate(`${this.userPrefix}Setup`);
+    this.generalHeader = this.i18n.translate(`${this.userPrefix}General Settings`);
+    this.dashboardHeader = this.i18n.translate(`${this.userPrefix}Dashboard Settings`);
+    this.reportHeader = this.i18n.translate(`${this.userPrefix}Report Settings`);
 
-    this.setupActions = (await this.userSetupUtils.getUserSetupActions()).actions;
-    this.dashboardSetup = (await this.userSetupUtils.getUserDashboardMetadata()).fields;
-    this.reportSetup = (await this.userSetupUtils.getUserReportMetadata()).fields;
+    this.setupActions = (this.userSetupUtils.getUserSetupActions()).actions;
+    this.dashboardSetup = (this.userSetupUtils.getUserDashboardMetadata()).fields;
+    this.reportSetup = (this.userSetupUtils.getUserReportMetadata()).fields;
 
     this.store.getStateSubject().subscribe((data) => {
       this.userSetup = data.userSetup;
@@ -310,6 +314,10 @@ export class UserSetupComponent implements OnInit {
 
   onGeneralSetupSubmit() {
     if (this.editPermission) {
+      this.generalForm.value.settings = this.generalForm.value.settings.map((setting: any) => ({
+        ...setting,
+        value: setting.options.find((option: any) => (option.value === setting.value) || (option.viewValue === setting.value)).value
+      }));
       this.store.updateUserSetup(this.generalForm.value.settings, true);
     }
   }

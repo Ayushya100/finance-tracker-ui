@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 // Services
 import { AuthService } from '../services/auth.service';
+import { UserGeneralService } from '../modules/user/services/user.service';
 import { UserService } from '../services/user.service';
 import { NotificationService } from '../../shared/services/notification.service';
 import { I18nService } from '../../shared/services/i18n.service';
@@ -29,6 +30,7 @@ export class UserStore {
 
     constructor(
         private authService: AuthService,
+        private userGeneralService: UserGeneralService,
         private userService: UserService,
         private notificationService: NotificationService,
         private i18n: I18nService,
@@ -67,7 +69,7 @@ export class UserStore {
     }
 
     loadUserSetup(id: any) {
-        this.userService.getUserSetup(id).subscribe({
+        this.userGeneralService.getUserSetup(id).subscribe({
             next: (res) => {
                 const userSetup = res.data;
                 this.state.userSetup = userSetup;
@@ -122,11 +124,15 @@ export class UserStore {
         this.state.userPermissions.setupViewPermission = userScopes.includes('SETUP.V');
         this.state.userPermissions.setupEditPermission = userScopes.includes('SETUP.U');
         this.state.userPermissions.setupDeletePermission = userScopes.includes('SETUP.D');
+        
+        this.state.userPermissions.paymentViewPermission = userScopes.includes('PAYMENT.V');
+        this.state.userPermissions.paymentEditPermission = userScopes.includes('PAYMENT.U');
+        this.state.userPermissions.paymentDeletePermission = userScopes.includes('PAYMENT.D');
     }
 
-    async updateUserInfo(payload: any) {
+    updateUserInfo(payload: any) {
         if (this.userId) {
-            this.userService.updateUserInfo(this.userId, payload).subscribe({
+            this.userGeneralService.updateUserInfo(this.userId, payload).subscribe({
                 next: (res: any) => {
                     this.notificationService.success(res);
                     this.assignUserGeneralInfo(res.data);
@@ -138,15 +144,15 @@ export class UserStore {
                 }
             });
         } else {
-            const msg = await this.i18n.translate(`${this.messagePrefix}User id not found`);
+            const msg = this.i18n.translate(`${this.messagePrefix}User id not found`);
             this.notificationService.errorMessage(`${msg}`);
         }
         this.serializeSubject();
     }
 
-    async updateUserPassword(payload: any) {
+    updateUserPassword(payload: any) {
         if (this.userId) {
-            this.userService.updateUserPassword(this.userId, payload).subscribe({
+            this.userGeneralService.updateUserPassword(this.userId, payload).subscribe({
                 next: (res: any) => {
                     this.notificationService.success(res);
                 },
@@ -156,14 +162,14 @@ export class UserStore {
                 }
             });
         } else {
-            const msg = await this.i18n.translate(`${this.messagePrefix}User id not found`);
+            const msg = this.i18n.translate(`${this.messagePrefix}User id not found`);
             this.notificationService.errorMessage(`${msg}`);
         }
     }
 
-    async updateUserImage(formData: any) {
+    updateUserImage(formData: any) {
         if (this.userId) {
-            this.userService.updateUserImage(this.userId, formData).subscribe({
+            this.userGeneralService.updateUserImage(this.userId, formData).subscribe({
                 next: (res: any) => {
                     this.state.profileImageURL = res.data.profileImageURL;
                     this.serializeSubject();
@@ -175,15 +181,15 @@ export class UserStore {
                 }
             })
         } else {
-            const msg = await this.i18n.translate(`${this.messagePrefix}User id not found`);
+            const msg = this.i18n.translate(`${this.messagePrefix}User id not found`);
             this.notificationService.errorMessage(`${msg}`);
         }
         this.serializeSubject();
     }
 
-    async deleteUserImage() {
+    deleteUserImage() {
         if (this.userId) {
-            this.userService.deleteUserImage(this.userId).subscribe({
+            this.userGeneralService.deleteUserImage(this.userId).subscribe({
                 next: (res: any) => {
                     this.state.profileImageURL = res.data.profileImageURL;
                     this.serializeSubject();
@@ -195,38 +201,38 @@ export class UserStore {
                 }
             })
         } else {
-            const msg = await this.i18n.translate(`${this.messagePrefix}User id not found`);
+            const msg = this.i18n.translate(`${this.messagePrefix}User id not found`);
             this.notificationService.errorMessage(`${msg}`);
         }
         this.serializeSubject();
     }
 
-    async deactivateUserAccount(payload: any) {
+    deactivateUserAccount(payload: any) {
         if (this.userId) {
-            const msgHeader = await this.i18n.translate(`${this.messagePrefix}Account Deletion in Progress`);
-            const msg = await this.i18n.translate(`${this.messagePrefix}Your account deletion request has been considered`);
-            const msgFooter = await this.i18n.translate(`${this.messagePrefix}Thank you for using our service`);
+            const msgHeader = this.i18n.translate(`${this.messagePrefix}Account Deletion in Progress`);
+            const msg = this.i18n.translate(`${this.messagePrefix}Your account deletion request has been considered`);
+            const msgFooter = this.i18n.translate(`${this.messagePrefix}Thank you for using our service`);
 
-            this.userService.deactivateUserAccount(this.userId, payload).subscribe({
+            this.userGeneralService.deactivateUserAccount(this.userId, payload).subscribe({
                 next: (res: any) => {
                     this.notificationService.success(res);
-                    this.popupService.openMsgPopup({
-                        msgHeader: msgHeader,
-                        msgBody: msg,
-                        msgFooter: msgFooter
-                    }).then(() => {
-                        this.userService.logoutUser().subscribe({
-                            next: (res: any) => {
-                                this.notificationService.success(res);
-                                this.authService.clearAuthData();
-                                this.router.navigate(['']);
-                            },
-                            error: (err: any) => {
-                                console.error(`Error while logging out user: ${err}`);
-                                this.notificationService.error(err);
-                            }
-                        })
-                    });
+                    // this.popupService.openMsgPopup({
+                    //     msgHeader: msgHeader,
+                    //     msgBody: msg,
+                    //     msgFooter: msgFooter
+                    // }).then(() => {
+                    //     this.userService.logoutUser().subscribe({
+                    //         next: (res: any) => {
+                    //             this.notificationService.success(res);
+                    //             this.authService.clearAuthData();
+                    //             this.router.navigate(['']);
+                    //         },
+                    //         error: (err: any) => {
+                    //             console.error(`Error while logging out user: ${err}`);
+                    //             this.notificationService.error(err);
+                    //         }
+                    //     })
+                    // });
                 },
                 error: (err: any) => {
                     console.error(`Error while deleting user image : ${err}`);
@@ -234,12 +240,12 @@ export class UserStore {
                 }
             });
         } else {
-            const msg = await this.i18n.translate(`${this.messagePrefix}User id not found`);
+            const msg = this.i18n.translate(`${this.messagePrefix}User id not found`);
             this.notificationService.errorMessage(`${msg}`);
         }
     }
 
-    async updateUserSetup(payload: any, themeChange: boolean) {
+    updateUserSetup(payload: any, themeChange: boolean) {
         if (this.userId) {
             const setupPayload = {
                 records: payload.map((setup: any) => ({
@@ -248,7 +254,7 @@ export class UserStore {
                 }))
             };
 
-            this.userService.updateUserSetup(this.userId, setupPayload).subscribe({
+            this.userGeneralService.updateUserSetup(this.userId, setupPayload).subscribe({
                 next: (res: any) => {
                     this.notificationService.success(res);
                     this.state.userSetup.map((setup: any) => {
@@ -267,7 +273,7 @@ export class UserStore {
                 }
             });
         } else {
-            const msg = await this.i18n.translate(`${this.messagePrefix}User id not found`);
+            const msg = this.i18n.translate(`${this.messagePrefix}User id not found`);
             this.notificationService.errorMessage(`${msg}`);
         }
     }

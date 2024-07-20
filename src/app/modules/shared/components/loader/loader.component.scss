@@ -10,18 +10,34 @@
     background: rgba(0, 0, 0, 0.5);
     z-index: 1000;
 }
-
+  
 .loader {
-    border: 8px solid #f3f3f3;
+    width: 56px;
+    height: 56px;
+    display: grid;
+    border: 4px solid #0000;
     border-radius: 50%;
-    border-top: 8px solid #3498db;
-    width: 60px;
-    height: 60px;
-    animation: spin 2s linear infinite;
+    border-right-color: #004dff;
+    animation: spinner-a4dj62 1s infinite linear;
 }
-  
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+
+.loader::before,
+.loader::after {
+    content: "";
+    grid-area: 1/1;
+    margin: 2px;
+    border: inherit;
+    border-radius: 50%;
+    animation: spinner-a4dj62 2s infinite;
 }
-  
+
+.loader::after {
+    margin: 8px;
+    animation-duration: 3s;
+}
+
+@keyframes spinner-a4dj62 {
+    100% {
+        transform: rotate(1turn);
+    }
+}

@@ -6,12 +6,10 @@ describe('MessagePopupComponent', () => {
   let component: MessagePopupComponent;
   let fixture: ComponentFixture<MessagePopupComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ MessagePopupComponent ]
-    })
-    .compileComponents();
-
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [MessagePopupComponent]
+    });
     fixture = TestBed.createComponent(MessagePopupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

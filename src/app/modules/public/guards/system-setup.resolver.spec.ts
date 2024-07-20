@@ -1,16 +1,17 @@
 import { TestBed } from '@angular/core/testing';
+import { ResolveFn } from '@angular/router';
 
-import { SystemSetupResolver } from './system-setup.resolver';
+import { systemSetupResolver } from './system-setup.resolver';
 
-describe('SystemSetupResolver', () => {
-  let resolver: SystemSetupResolver;
+describe('systemSetupResolver', () => {
+  const executeResolver: ResolveFn<boolean> = (...resolverParameters) => 
+      TestBed.runInInjectionContext(() => systemSetupResolver(...resolverParameters));
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    resolver = TestBed.inject(SystemSetupResolver);
   });
 
   it('should be created', () => {
-    expect(resolver).toBeTruthy();
+    expect(executeResolver).toBeTruthy();
   });
 });

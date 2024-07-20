@@ -1,10 +1,8 @@
-import { Injectable } from '@angular/core';
-import {
-  Router, Resolve,
-  RouterStateSnapshot,
-  ActivatedRouteSnapshot
-} from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { inject, Injectable } from '@angular/core';
+import { RouterStateSnapshot, ActivatedRouteSnapshot, ResolveFn } from '@angular/router';
+import { catchError, map, Observable, of } from 'rxjs';
+
+// Services
 import { PublicService } from '../services/public.service';
 import { I18nService } from '../../shared/services/i18n.service';
 import { ThemeService } from '../../shared/services/theme.service';
@@ -12,7 +10,7 @@ import { ThemeService } from '../../shared/services/theme.service';
 @Injectable({
   providedIn: 'root'
 })
-export class SystemSetupResolver implements Resolve<boolean> {
+export class SystemSetupResolverSVC {
 
   systemSetup: any = null;
 
@@ -22,23 +20,22 @@ export class SystemSetupResolver implements Resolve<boolean> {
     private themeService: ThemeService
   ) {}
 
-  getSystemSetup(): any {
-    this.publicService.getSystemSetup().subscribe({
-      next: (res) => {
+  getSystemSetup(): Observable<any> {
+    return this.publicService.getSystemSetup().pipe(
+      map((res) => {
         this.systemSetup = res.data;
-        this.i18n.loadSystemHeader(this.systemSetup);
         this.i18n.refreshUserSetup(this.systemSetup);
         this.themeService.loadSystemSetup(this.systemSetup);
-        return true;
-      },
-      error: (err) => {
+        return this.systemSetup;
+      }),
+      catchError((err) => {
         console.error(`Failed to fetch user setup : ${err}`);
-        return false;
-      }
-    });
+        return of(null);
+      })
+    );
   }
+}
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-    return this.getSystemSetup();
-  }
+export const SystemSetupResolver: ResolveFn<any> = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+  return inject(SystemSetupResolverSVC).getSystemSetup();
 }

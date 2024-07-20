@@ -4,3 +4,33 @@
 .combine-icon-left {
     margin-right: -5px;
 }
+
+.link {
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+}
+
+.link:not(:active):hover, .link:focus {
+    background-color: #21262C;
+}
+.link:focus, .link:active {
+    background-color: #1A1F24;
+    outline: none;
+}
+
+.link::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: -10px;
+    width: 5px;
+    height: 80%;
+    background-color: #2F81F7;
+    border-radius: 5px;
+    opacity: 0;
+}
+
+.link:focus::before, .link:active::before {
+    opacity: 1;
+}

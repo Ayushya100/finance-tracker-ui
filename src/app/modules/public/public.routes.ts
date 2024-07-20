@@ -9,12 +9,9 @@ import { SystemSetupResolver } from './guards/system-setup.resolver';
 
 export const publicRoutes: Routes = [
     {
-        path: '', component: CoreComponent, resolve: { setup: SystemSetupResolver },
+        path: '', component: CoreComponent, resolve: { data: SystemSetupResolver },
         children: [
             ...PublicIndexRoutes
         ]
-    },
-    {
-        path: '**', redirectTo: 'register-user'
     }
 ];
